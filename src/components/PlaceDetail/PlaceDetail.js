@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import get from 'lodash/get'
 import split from 'lodash/split'
+import Util from '../../util'
 
 class PlaceDetail extends Component {
   constructor (props) {
@@ -28,14 +29,7 @@ class PlaceDetail extends Component {
     const { data } = this.props
     const { copied } = this.state
     // Open hours
-    const date = new Date()
-    const day = date.getDay()
-    const weekdayHours = get(data, 'opening_hours.weekday_text', null)
-    let hours = null
-    try {
-      hours = weekdayHours[Math.abs(day - 6)]
-      hours = split(hours, ': ')[1]
-    } catch (e) { }
+    const hours = Util.getOpenHours(new Date(), data)
     // Ratings
     const rating = get(data, 'rating')
     const totalRatings = get(data, 'user_ratings_total')

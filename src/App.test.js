@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
 import AppFunc from './AppFunc'
+import Util from './util'
 import Constants from './util/Constants'
 import Categories from './util/categories'
 import initialState from './App'
@@ -127,6 +128,7 @@ it('gets the previous place', () => {
   }
   expect(AppFunc(prev, curr)).toEqual(EVENTS.GET_PREVIOUS_PLACE)
 })
+
 it('resets places', () => {
   const prev = {
     ...initialState,
@@ -137,4 +139,30 @@ it('resets places', () => {
     reset: true
   }
   expect(AppFunc(prev, curr)).toEqual(EVENTS.RESET_PLACES)
+})
+
+it('determines night time at 7:00 AM', () => {
+  const date = new Date('2/4/19 7:00 AM')
+  const latitude = 28.5383
+  const longitude = -81.3792
+  expect(Util.isNight(date, latitude, longitude)).toEqual(false)
+})
+
+
+it('determines night time at 7:00 PM', () => {
+  const date = new Date('2/4/19 7:00 PM')
+  const latitude = 28.5383
+  const longitude = 81.3792
+  expect(Util.isNight(date, latitude, longitude)).toEqual(false)
+})
+
+it('determines valentines day', () => {
+  const date = new Date('2/14/19')
+  expect(Util.getTodayHoliday(date)).toEqual("Valentine's Day")
+})
+
+
+it('determines non-holiday', () => {
+  const date = new Date('2/13/19')
+  expect(Util.getTodayHoliday(date)).toEqual('')
 })

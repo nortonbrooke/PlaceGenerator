@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
-import shortid from 'shortid'
-import isNil from 'lodash/isNil'
 import get from 'lodash/get'
 import ArrowDark from '../images/icon-arrow-blue.svg'
 import ArrowLight from '../images/icon-arrow-white.svg'
-import PlaceDetail from '../components/PlaceDetail'
+import PlaceDetail from './PlaceDetail/PlaceDetail'
 
 class PlaceFront extends Component {
   constructor (props) {
@@ -42,9 +40,6 @@ class PlaceFront extends Component {
 
   getPlaceDistance () {
     const { location, place } = this.props
-    if (isNil(location)) {
-      return
-    }
     const request = {
       origins: [location],
       destinations: 'place_id:' + place.place_id,
@@ -79,23 +74,21 @@ class PlaceFront extends Component {
       placeDetailAttributions
     } = this.state
     return (<div className='App-place front flipInY'>
-      <div className='body'>
-        {placeDistance && <div className='distance flipInX'
-          title='Place distance'
-          style={{ color: color }}>
-          {placeDistance}
-        </div>}
-        <div className='name' title='Place name'>{place.name}</div>
-        {placeDetail && <PlaceDetail data={placeDetail} />}
-        <div className='App-html-attributions place-detail' title='Place attributions'>
-          {placeDetailAttributions.map((a) => a)}
-        </div>
+      {placeDistance && <div className='distance flipInX'
+        title='Place distance'
+        style={{ color: color }}>
+        {placeDistance}
+      </div>}
+      <div className='name' title='Place name'>{place.name}</div>
+      {placeDetail && <PlaceDetail data={placeDetail} />}
+      <div className='App-html-attributions place-detail' title='Place attributions'>
+        {placeDetailAttributions.map((a) => a)}
       </div>
       {showArrows && <div className='panel left' title='Show previous place' onClick={goBack}>
-        <img src={isNightMode ? ArrowLight : ArrowDark} key={shortid.generate()} height='28' alt='next' />
+        <img src={isNightMode ? ArrowLight : ArrowDark} height='28' alt='next' />
       </div>}
       {showArrows && <div className='panel right' title='Show next place' onClick={goForward}>
-        <img src={isNightMode ? ArrowLight : ArrowDark} key={shortid.generate()} height='28' alt='prev' />
+        <img src={isNightMode ? ArrowLight : ArrowDark} height='28' alt='prev' />
       </div>}
     </div>)
   }

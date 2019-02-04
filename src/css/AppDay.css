@@ -6,6 +6,7 @@
 }
 
 .App-day select {
+  background: #fff;
   border-color:#4285F4;
   color: #4285F4;
 }

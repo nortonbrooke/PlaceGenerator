@@ -28,7 +28,10 @@ const Constants = {
     'entertainment',
     'store',
     'stores'
-  ]
+  ],
+  HOLIDAYS: {
+    VALENTINES: "Valentine's Day"
+  }
 }
 
 export default Constants

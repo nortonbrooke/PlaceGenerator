@@ -6,6 +6,7 @@
 }
 
 .App-night select {
+  background: #000;
   border-color:#fff;
   color: #fff;
 }

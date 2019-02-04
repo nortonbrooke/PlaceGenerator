@@ -1,18 +1,19 @@
 import React, { Component } from 'react'
-import { getSunrise, getSunset } from 'sunrise-sunset-js'
 import _ from 'lodash'
-import shortid from 'shortid'
 import classnames from 'classnames'
 /* Util */
 import AppFunc from './AppFunc'
+import Util from './util'
 import Constants from './util/Constants'
 import Palette from './util/Palette'
 /* CSS */
-import './Animate.css'
-import './App.css'
-import './AppDay.css'
-import './AppNight.css'
+import './css/App.css'
+import './css/Animate.css'
+import './css/AppDay.css'
+import './css/AppNight.css'
 /* Components */
+import SpecialBackground from './components/SpecialBackground'
+import NightBackground from './components/NightBackground'
 import Nav from './components/Nav'
 import Slider from './components/Slider'
 import Selector from './components/Selector'
@@ -43,7 +44,7 @@ const googleMapsClient = require('@google/maps').createClient({
 })
 
 export const initialState = {
-  isNightMode: true,
+  isNightMode: false,
   category: Categories.food,
   type: Categories.food.defaultType,
   location: [],
@@ -68,20 +69,13 @@ class App extends Component {
   }
 
   componentDidMount () {
-    this.setState({location: [28.5383, -81.3792]})
-    return
     const success = (position) => {
       const latitude = _.get(position, 'coords.latitude')
       const longitude = _.get(position, 'coords.longitude')
-      const date = new Date()
-      const sunrise = getSunrise(latitude, longitude, date)
-      const sunriseDiff = sunrise - date
-      const sunset = getSunset(latitude, longitude, date)
-      const sunsetDiff = sunset - date
       this.setState({
         loading: false,
         location: [latitude, longitude],
-        isNightMode: sunriseDiff <= sunsetDiff
+        isNightMode: Util.isNight(new Date(), latitude, longitude)
       })
     }
 
@@ -310,7 +304,7 @@ class App extends Component {
       }
       if (_.isEmpty(nearbyPlaces)) {
         return <PlaceDisabled>
-          <img src={isNightMode ? MarkerLight : MarkerDark} key={shortid.generate()} alt='Disabled' width={80} />
+          <img src={isNightMode ? MarkerLight : MarkerDark} alt='Disabled' width={80} />
         </PlaceDisabled>
       }
       if (_.isNil(place)) {
@@ -332,58 +326,58 @@ class App extends Component {
       'App-day': !isNightMode,
       'App-night': isNightMode
     })}>
-      {isNightMode && <div>
-        <div className='stars' key={shortid.generate()} />
-        <div className='twinkling' key={shortid.generate()} />
-      </div>}
+      {isNightMode && <NightBackground />}
+      {!loading && !_.isEmpty(location) && <SpecialBackground isNightMode={isNightMode} />}
       {loading && _.isEmpty(location) ? <Spinner isNightMode={isNightMode} />
         : (<div className='App-content'>
           <header className='App-header' onClick={() => this.switchMode()}>
-            <img src={isNightMode ? LogoLight : LogoDark} key={shortid.generate()}
+            <img src={isNightMode ? LogoLight : LogoDark}
               width={165} alt='Waidoe' title='way&#x2022;doe' />
-            <img src={isNightMode ? Moon : Sun} key={shortid.generate()}
+            <img src={isNightMode ? Moon : Sun}
               height={28} width={28}
               alt={isNightMode ? 'Moon' : 'Sun'}
               title='Switch mode' />
             <div className='keywords'>{Constants.KEYWORDS.join(' ')}</div>
           </header>
-          <Nav selected={category}
-            onClick={(category) => this.toggleCategory(category)} />
-          {customRadiusEnabled && <Slider label='Radius'
-            min={5} max={30} step={5} value={customRadius}
-            onChange={(value) => this.setCustomRadius(value)} />}
-          <div className='App-tool-bar'>
-            <Selector selected={type}
-              title='Select type'
-              options={category.types}
-              onChange={(type) => this.changeType(type)} />
-            <button
-              className='yellow'
-              title='Change radius'
-              onClick={() => this.toggleCustomRadius()}>
-              <Radius />
-            </button>
-            <button
-              className='green'
-              title='Generate random place'
-              disabled={_.isEmpty(nearbyPlaces)}
-              onClick={() => this.showRandom()}>
-              <img src={Clover} alt='Generate random place' width={20} height={20} />
-            </button>
-            <button
-              className='red'
-              disabled={_.isEmpty(nearbyPlaces)}
-              title='Reset to first place'
-              onClick={() => this.reset()}>
-              <img src={Refresh} alt='Reset to first place' width={20} height={20} />
-            </button>
+          <div>
+            <Nav selected={category}
+              onClick={(category) => this.toggleCategory(category)} />
+            {customRadiusEnabled && <Slider label='Radius'
+              min={5} max={30} step={5} value={customRadius}
+              onChange={(value) => this.setCustomRadius(value)} />}
+            <div className='App-tool-bar'>
+              <Selector selected={type}
+                title='Select type'
+                options={category.types}
+                onChange={(type) => this.changeType(type)} />
+              <button
+                className='yellow'
+                title='Change radius'
+                onClick={() => this.toggleCustomRadius()}>
+                <Radius />
+              </button>
+              <button
+                className='green'
+                title='Generate random place'
+                disabled={_.isEmpty(nearbyPlaces)}
+                onClick={() => this.showRandom()}>
+                <img src={Clover} alt='Generate random place' width={20} height={20} />
+              </button>
+              <button
+                className='red'
+                disabled={_.isEmpty(nearbyPlaces)}
+                title='Reset to first place'
+                onClick={() => this.reset()}>
+                <img src={Refresh} alt='Reset to first place' width={20} height={20} />
+              </button>
+            </div>
           </div>
           <AppPlace />
           <div className='App-html-attributions nearby-list' title='Nearby places attributions'>
             {nearbyPlacesAttributions.map((a) => a)}
+            <img src={isNightMode ? PoweredByGoogleLight : PoweredByGoogleDark}
+              height={18} width={144} alt='powered by Google' title='powered by Google' />
           </div>
-          <img src={isNightMode ? PoweredByGoogleLight : PoweredByGoogleDark}
-            height={18} width={144} alt='powered by Google' title='powred by Google' />
           <footer className='App-footer'>
             <MailchimpSubscribe
               url={Constants.MAILCHIMP_URL}
@@ -398,7 +392,7 @@ class App extends Component {
             <button className='small contact' title='Contact Waidoe'>
               <a href='mailto:contact.waidoe@gmail.com'>Contact</a>
             </button>
-            <div>&copy; Waidoe 2019</div>
+            <div style={{color: 'transparent'}}>&copy; Waidoe 2019</div>
           </footer>
         </div>)}
     </div>)
