@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "author": "Brooke Norton <brookemorgannorton@gmail.com>",
-  "license": "NO LICENSE",
+  "homepage": "https://waidoe.com",
+  "licenses": [],
   "dependencies": {
     "@google/maps": "^0.5.5",
     "classnames": "^2.2.6",
