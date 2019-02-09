@@ -1,0 +1,85 @@
+
+.App {
+  font-size: 14px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+/* ------------ Special Button Colors ------------ */
+.App.day button.yellow,
+.App.night button.yellow  {
+  color: #F4B400;
+  border-color:#F4B400;
+}
+
+.App button.yellow.selected {
+  background-color: #F4B400;
+}
+
+.App.day button.green,
+.App.night button.green  {
+  color: #0F9D58;
+  border-color:#0F9D58;
+}
+
+.App button.green.selected {
+  background-color: #0F9D58;
+}
+
+.App.day button.red,
+.App.night button.red  {
+  color: #DB4437;
+  border-color:#DB4437;
+}
+
+.App button.red.selected {
+  background-color: #DB4437;
+}
+
+/* ---------------- App Day Styles ---------------- */
+.App.day {
+  background: #FFFFFF;
+  color: #4285F4;
+}
+
+.App.day button {
+  background: #FFFFFF;
+  color: #4285F4;
+  border-color: #4285F4;
+}
+
+.App.day a {
+  color: #4285F4;
+}
+
+.App.day input {
+  background: #FFFFFF;
+  border: 1px solid #4285F4;
+}
+
+/* ---------------- App Night Styles ---------------- */
+.App.night {
+  background: #000000;
+  color: #FFFFFF;
+}
+
+.App.night button {
+  background: #000000;
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+}
+
+.App.night a {
+  color: #FFFFFF;
+}
+
+.App.night input {
+  background: #000000;
+  color: #FFFFFF;
+  border: 1px solid #FFFFFF;
+}

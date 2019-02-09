@@ -1,0 +1,18 @@
+.App-places {
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 1;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 8px;
+}
+
+.App-places .attributions {
+  text-align: center;
+  font-size: 11px;
+}
+
+.App-places .attributions img {
+  margin-top: 4px; 
+  display: block;
+}

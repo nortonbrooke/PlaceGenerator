@@ -1,0 +1,23 @@
+.App-toolbar {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.App-toolbar select,
+.App-toolbar button {
+  flex: 1
+}
+
+.App-toolbar button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  padding: 0px;
+}
+
+.App-toolbar button:not(:first-child) {
+  margin-left: 6px;
+}

@@ -1,0 +1,15 @@
+.App-place.empty {
+  align-items: center;
+  justify-content: center;
+}
+
+.App-place.empty.request {
+  background: #4285F4;
+}
+
+.App-place.empty.request button {
+  color: #FFFFFF;
+  background-color: #4285F4;
+  border-color: #FFFFFF;
+  width: 64px;
+}
