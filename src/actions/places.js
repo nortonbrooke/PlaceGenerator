@@ -5,10 +5,9 @@ export const SET_CATEGORY = 'SET_CATEGORY'
 export const SET_TYPE = 'SET_TYPE'
 export const SET_RADIUS = 'SET_RADIUS'
 
-export const setRequested = (requested) => {
+export const setRequested = () => {
   return {
-    type: SET_REQUESTED,
-    requested: requested
+    type: SET_REQUESTED
   }
 }
 

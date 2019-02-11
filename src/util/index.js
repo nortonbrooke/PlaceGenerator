@@ -94,6 +94,10 @@ export const Categories = {
       label: 'Ethnicity',
       value: 'ethnicity',
       group: [{
+        value: 'restaurant:american',
+        label: 'American'
+      },
+      {
         value: 'restaurant:chinese',
         label: 'Chinese'
       },

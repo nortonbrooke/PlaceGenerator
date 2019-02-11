@@ -20,7 +20,8 @@ export default (state = initialState, action) => {
       }
     case SET_LOCATION:
       return {...state,
-        location: action.location
+        location: action.location,
+        locationRequested: false
       }
     case SET_NIGHT_MODE:
       return {...state,

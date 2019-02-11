@@ -11,18 +11,13 @@ export const getLocation = (dispatch) => {
     const latitude = get(position, 'coords.latitude')
     const longitude = get(position, 'coords.longitude')
     const isNight = getNight(latitude, longitude)
-    dispatch(setLocation([latitude, longitude]))
     dispatch(setNightMode(isNight))
-    dispatch(setLocationRequested(false))
+    dispatch(setLocation([latitude, longitude]))
   }
 
   const error = (error) => {
     console.log(error)
-    this.setState({
-      loading: false,
-      location: [],
-      error: true
-    })
+    dispatch(setLocation([]))
   }
   dispatch(setLocationRequested(true))
   if (navigator && navigator.geolocation) {

@@ -23,7 +23,9 @@ class App extends Component {
     } = this.props
     if (locationRequested) {
       return (<div className='App'>
-        <Spinner className='bounce' />
+        <Spinner className='bounce'>
+          Getting your location to find places near you
+        </Spinner>
       </div>)
     }
     return (

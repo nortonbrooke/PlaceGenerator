@@ -11,15 +11,15 @@ class EmptyPlaces extends Component {
       error
     } = this.props
     if (isEmpty(location)) {
-      return (<div className='App-place empty-location'>
-        Please enable your location
+      return (<div className='App-place empty'>
+        Please allow your location
       </div>)
     } else if (error) {
-      return (<div className='App-place empty spinner'>
+      return (<div className='App-place empty'>
         No places found
       </div>)
     } else if (requested) {
-      return (<div className='App-place empty spinner'>
+      return (<div className='App-place empty'>
         <Spinner className='pulse' />
       </div>)
     } else {

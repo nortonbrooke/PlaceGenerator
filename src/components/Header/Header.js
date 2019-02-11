@@ -16,7 +16,8 @@ const Header = ({ nightMode, setNightMode }) => {
     <img src={nightMode ? Moon : Sun}
       height={28} width={28}
       alt={nightMode ? 'Moon' : 'Sun'}
-      title='Switch mode' />
+      title='Switch mode'
+      className='icon' />
   </header>
 }
 
