@@ -3,24 +3,5 @@
   margin: 8px 16px;
   display: flex;
   align-items: center;
-  flex-flow: column nowrap;
+  justify-content: center;
 }
-
-.App-footer .toggle {
-  height: 30px;
-  width: 30px;
-  cursor: pointer;
-}
-
-.App-footer .toggle.closed {
-  transform: rotate(180deg);
-}
-
-.App-footer .contact {
-  display: flex;
-}
-
-.App-footer .contact button {
-  flex: 1;
-}
-

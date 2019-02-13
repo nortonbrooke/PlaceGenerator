@@ -1,8 +1,7 @@
 .App-slider {
-  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   font-size: 16px;
   font-weight: 600;
   padding: 8px;
@@ -10,6 +9,10 @@
   border: 2px solid;
   border-radius: 6px;
   box-sizing: border-box;
+}
+
+.App-slider label {
+  width: 60px;
 }
 
 .App-slider .control,
@@ -22,8 +25,17 @@
   margin: 0px 4px;
 }
 
-.App-slider .value {
+.App-slider .control span {
   width: 20px;
+}
+
+.App-slider .control span:first-child {
   text-align: right;
-  margin-right: 4px;
+}
+
+.App-slider .control-value {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 70px;
 }

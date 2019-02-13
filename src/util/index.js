@@ -24,6 +24,14 @@ export const getOpenHours = (date, data) => {
   return hours
 }
 
+export const concat = (value, unit) => {
+  let text = ''
+  for (let i = 0; i < value; i++) {
+    text += unit
+  }
+  return text
+}
+
 export const Constants = {
   GOOGLE_API_KEY: 'AIzaSyB8UQOm_ywVozK4RCYiC9dwHwOe34fobis',
   MAILCHIMP_URL: 'https://waidoe.us20.list-manage.com/subscribe/post?u=2646b6337419b34279782eebc&amp;id=2da1ff6e00',
@@ -51,17 +59,15 @@ export const Constants = {
     'bar',
     'restaurant',
     'restaurants',
-    'entertainment',
-    'store',
-    'stores'
+    'entertainment'
   ]
 }
 
 export const palette = [
-  '#4285F4', // blue
-  '#DB4437', // red
-  '#F4B400', // yellow
-  '#894EFD'  // purple
+  '#8549FD', // purple
+  '#F46036', // orange
+  '#F5B400', // yellow
+  '#EF271B'  // red
 ]
 
 export const getCategory = (id) => get(Categories[id])
@@ -77,10 +83,6 @@ export const Categories = {
     types: [{
       label: 'Bakery',
       value: 'bakery'
-    },
-    {
-      label: 'Bar',
-      value: 'bar'
     },
     {
       label: 'Cafe',
@@ -143,16 +145,20 @@ export const Categories = {
   entertainment: {
     id: 'entertainment',
     types: [{
-      label: 'Aquarium',
-      value: 'aquarium'
-    },
-    {
       label: 'Amusement Park',
       value: 'amusement_park'
     },
     {
+      label: 'Aquarium',
+      value: 'aquarium'
+    },
+    {
       label: 'Art Gallery',
       value: 'art_gallery'
+    },
+    {
+      label: 'Bar',
+      value: 'bar'
     },
     {
       label: 'Bowling Alley',
@@ -186,7 +192,7 @@ export const Categories = {
       label: 'Zoo',
       value: 'zoo'
     }],
-    defaultType: 'night_club'
+    defaultType: 'bar'
   },
   stores: {
     id: 'stores',
@@ -367,6 +373,6 @@ export const Categories = {
         label: 'Transit Station',
         value: 'transit_station'
       }],
-    defaultType: 'airport'
+    defaultType: 'supermarket'
   }
 }

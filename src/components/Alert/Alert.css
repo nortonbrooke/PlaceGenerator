@@ -1,0 +1,13 @@
+.App-alert {
+  font-size: 11px;
+  padding: 4px 8px;
+  margin: 8px;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.App-alert p {
+  margin-right: 8px;
+}

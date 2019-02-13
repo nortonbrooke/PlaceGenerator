@@ -10,24 +10,14 @@
   text-align: center;
   box-sizing: border-box;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   cursor: default;
   position: relative;
 }
 
-.App-place .control {
-  height: 24px;
-  width: 24px;
-  margin: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.App-place .control.left .arrow {
-  transform: rotate(180deg);
+.App-place .content {
+  margin: 16px;
 }
 
 .App-place .distance {
@@ -51,7 +41,7 @@
   margin: 8px;
 }
 
-.App-place .detail > div {
+.App-place .detail div {
   display: flex;
   align-items: center;
   margin: 4px;
@@ -59,7 +49,11 @@
 
 .App-place .detail .hours {
   flex-direction: column;
-  color: #0F9D58;
+}
+
+.App-place .price {
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .App-place .detail input {

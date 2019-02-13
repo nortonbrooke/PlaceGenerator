@@ -1,7 +1,7 @@
 export const SET_LOCATION_REQUESTED = 'SET_LOCATION_REQUESTED'
 export const SET_LOCATION = 'SET_LOCATION'
 export const SET_NIGHT_MODE = 'SET_NIGHT_MODE'
-export const TOGGLE_FOOTER = 'TOGGLE_FOOTER'
+export const TOGGLE_COOKIE_BANNER = 'TOGGLE_COOKIE_BANNER'
 
 export const setLocationRequested = (requested) => {
   return {
@@ -24,8 +24,8 @@ export const setNightMode = (nightMode) => {
   }
 }
 
-export const toggleFooter = () => {
+export const toggleCookieBanner = () => {
   return {
-    type: TOGGLE_FOOTER
+    type: TOGGLE_COOKIE_BANNER
   }
 }

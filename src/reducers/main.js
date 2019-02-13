@@ -2,14 +2,14 @@ import {
   SET_LOCATION_REQUESTED,
   SET_LOCATION,
   SET_NIGHT_MODE,
-  TOGGLE_FOOTER
+  TOGGLE_COOKIE_BANNER
  } from '../actions/main'
 
 const initialState = {
   locationRequested: false,
   location: [],
   nightMode: false,
-  showFooter: false
+  showCookieBanner: true
 }
 
 export default (state = initialState, action) => {
@@ -27,9 +27,9 @@ export default (state = initialState, action) => {
       return {...state,
         nightMode: action.nightMode
       }
-    case TOGGLE_FOOTER:
+    case TOGGLE_COOKIE_BANNER:
       return {...state,
-        showFooter: !state.showFooter
+        showCookieBanner: !state.showCookieBanner
       }
     default:
       return state

@@ -21,6 +21,13 @@ export const getLocation = (dispatch) => {
   }
   dispatch(setLocationRequested(true))
   if (navigator && navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(success, error)
+    navigator.geolocation.watchPosition(success, error)
   }
+}
+
+export const clearLocation = (dispatch) => {
+  if (navigator && navigator.clearWatch) {
+    navigator.clearWatch()
+  }
+  dispatch(setLocation([]))
 }

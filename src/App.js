@@ -1,55 +1,78 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { getLocation } from './middleware/main'
+import { toggleCookieBanner } from './actions/main'
 import Ad from './components/Ad'
+import Alert from './components/Alert'
 import Header from './components/Header'
 import Footer from './components/Footer'
-import Spinner from './components/Spinner'
 import Places from './views/Places'
+import TermsOfService from './views/Legal/TermsOfService'
+import PrivacyPolicy from './views/Legal/PrivacyPolicy'
+import CookiePolicy from './views/Legal/CookiePolicy'
 import classnames from 'classnames'
 import './App.css'
 import './Animate.css'
 
 class App extends Component {
-  componentDidMount () {
-    const { getLocation } = this.props
-    getLocation()
-  }
-
   render () {
     const {
-      locationRequested,
-      nightMode
+      nightMode,
+      showCookieBanner,
+      toggleCookieBanner
     } = this.props
-    if (locationRequested) {
-      return (<div className='App'>
-        <Spinner className='bounce'>
-          Getting your location to find places near you
-        </Spinner>
-      </div>)
-    }
+
+    const CookieBanner = () => (<Alert className='bottom'>
+      <p>
+        This site uses cookies to offer you a better experience, analyze site traffic, and serve targeted advertisements.
+        By continuing to use this site, you consent to the use of cookies outlined in our <Link to='/cookie-policy'>Cookie Policy</Link>.
+      </p>
+      <button
+        className='small'
+        onClick={() => toggleCookieBanner()}>
+        Accept
+    </button>
+    </Alert>)
+
     return (
-      <div className={classnames('App', {
-        day: !nightMode,
-        night: nightMode
-      })}>
-        <Header />
-        <Places />
-        <Ad />
-        <Footer />
-      </div>
+      <Router>
+        <div>
+          <Route
+            exact
+            path='/'
+            render={() => {
+              return (
+                <div
+                  className={classnames('App', {
+                    day: !nightMode,
+                    night: nightMode
+                  })}
+                >
+                  <Header />
+                  <Places />
+                  <Ad />
+                  {showCookieBanner && <CookieBanner />}
+                  <Footer />
+                </div>
+              )
+            }}
+          />
+          <Route path='/terms-of-service' component={TermsOfService} />
+          <Route path='/privacy-policy' component={PrivacyPolicy} />
+          <Route path='/cookie-policy' component={CookiePolicy} />
+        </div>
+      </Router>
     )
   }
 }
 
 const mapStateToProps = state => ({
   nightMode: state.main.nightMode,
-  locationRequested: state.main.locationRequested,
-  location: state.main.location
+  showCookieBanner: state.main.showCookieBanner
 })
 
 const mapDispatchToProps = dispatch => ({
-  getLocation: () => getLocation(dispatch)
+  toggleCookieBanner: () => dispatch(toggleCookieBanner())
 })
 
 export default connect(

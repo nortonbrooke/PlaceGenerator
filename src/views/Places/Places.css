@@ -7,6 +7,14 @@
   margin: 8px;
 }
 
+.App-places .price-level {
+  font-size: 28px;
+}
+
+.App-places .price-level span {
+  position: absolute;
+}
+
 .App-places .attributions {
   text-align: center;
   font-size: 11px;

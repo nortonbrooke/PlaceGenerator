@@ -16,11 +16,12 @@ button {
   min-height: 28px;
   font-size: 16px;
   font-weight: 600;
-  border-width: 2px;
-  border-style: solid;
+  color: #326ADF;
+  border: 2px solid #326ADF;
   box-shadow: none;
   outline: none;
   cursor: pointer;
+  background: #FFFFFF;
 }
 
 button:not(.nav-button) {
@@ -40,12 +41,6 @@ button:disabled {
   cursor: default;
 }
 
-/* Link ---------------- */
 a {
-  margin: 0px 4px;
-  cursor: pointer;
-}
-
-button a {
-  text-decoration: none;
+  color: inherit;
 }

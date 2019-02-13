@@ -13,8 +13,8 @@
 /* ---------------- App Day/Night Styles ---------------- */
 .App.day .App-select {
   background: #FFFFFF;
-  border-color:#4285F4;
-  color: #4285F4;
+  border-color:#326ADF;
+  color: #326ADF;
 }
 
 .App.night .App-select {

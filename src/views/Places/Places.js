@@ -5,21 +5,25 @@ import isNil from 'lodash/isNil'
 import noop from 'lodash/noop'
 import shortid from 'shortid'
 import { Categories, getCategoryTypes } from '../../util'
+import Container from '../../components/Container'
 import Nav from '../../components/Nav'
 import Slider from '../../components/Slider'
 import Toolbar from '../../components/Toolbar'
 import Select from '../../components/Select'
 import Radius from '../../assets/Radius'
-import Clover from '../../assets/clover.svg'
-import Reset from '../../assets/reset.svg'
 import EmptyPlaces from '../EmptyPlaces'
 import Place from '../Place'
-import PoweredByGoogleDark from '../../assets/google-dark.png'
-import PoweredByGoogleLight from '../../assets/google-light.png'
+import PoweredByGoogleDark from '../../assets/powered_by_google_on_white_hdpi.png'
+import PoweredByGoogleLight from '../../assets/powered_by_google_on_non_white_hdpi.png'
 import classnames from 'classnames'
 import './Places.css'
 
-class Places extends Component {  
+class Places extends Component {
+  componentWillUnmount () {
+    const { clearLocation } = this.props
+    clearLocation()
+  }
+
   render () {
     const {
       nightMode,
@@ -33,14 +37,16 @@ class Places extends Component {
       radius,
       radiusToggled,
       setRadius,
-      setRandom,
-      reset,
+      priceLevel,
+      priceLevelToggled,
+      setPriceLevel,
+      getNearbyPlaces,
       placeId,
-      getNearbyPlaces
+      setRandom
     } = this.props
     return (
       <div className='App-places'>
-        <div>
+        <Container>
           <Nav>
             <button
               className={classnames({
@@ -60,29 +66,11 @@ class Places extends Component {
             >
               Entertainment
             </button>
-            <button
-              className={classnames({
-                selected: isEqual(Categories.stores.id, category)
-              })}
-              title='Stores near me'
-              onClick={() => setCategory(Categories.stores.id)}
-            >
-              Stores
-            </button>
-            <button
-              className={classnames({
-                selected: isEqual(Categories.services.id, category)
-              })}
-              title='Services near me'
-              onClick={() => setCategory(Categories.services.id)}
-            >
-              Services
-            </button>
           </Nav>
           <Toolbar>
             <Select
               selected={type}
-              title='Select type'
+              title='Change type'
               style={{flex: 4}}
               onChange={(type) => setType(type)}>
               {getCategoryTypes(category).map((o) => {
@@ -103,8 +91,17 @@ class Places extends Component {
               title='Change radius'
               onClick={() => setRadius(radiusToggled ? 0 : 5)}>
               <Radius className={classnames({
-                white: radiusToggled
+                white: radiusToggled,
+                black: radiusToggled && nightMode
               })} />
+            </button>
+            <button
+              className={classnames('price-level', 'green', {
+                selected: priceLevelToggled
+              })}
+              title='Specify price level'
+              onClick={() => setPriceLevel(priceLevelToggled ? 0 : 2)}>
+              <span>$</span>
             </button>
           </Toolbar>
           {radiusToggled && (
@@ -118,44 +115,44 @@ class Places extends Component {
               onChange={value => setRadius(value)}
             />
           )}
-          <Toolbar>
+          {priceLevelToggled && (
+            <Slider
+              label='Price'
+              unit='$'
+              asMultiple
+              min={1}
+              max={4}
+              step={1}
+              value={priceLevel}
+              onChange={value => setPriceLevel(value)}
+            />
+          )}
+          {!isEmpty(location) && <Toolbar>
             <button
-              className='red'
-              disabled={isEmpty(places)}
-              title='Reset to first place'
-              onClick={() => reset()}>
-              <img src={Reset} alt='Reset to first place' width={20} height={20} />
-            </button>
-            <button
-              className='green'
-              title='Generate random place'
-              onClick={() => {
-                setRandom()
+              title='Generate places'
+              disabled={isEqual(places.length, 1)}
+              onClick={(e) => {
                 if (isEmpty(places)) {
                   getNearbyPlaces({
                     location,
                     type,
-                    radius
+                    radius,
+                    priceLevel
                   })
+                } else {
+                  setRandom()
                 }
               }}>
-              <img src={Clover} alt='Generate random place' width={20} height={20} />
+            Generate
             </button>
-            <button
-              title='Find places'
-              style={{flex: 3}}
-              disabled={!isEmpty(places)}
-              onClick={() => getNearbyPlaces({
-                location,
-                type,
-                radius
-              })}>
-              Find
-            </button>
-          </Toolbar>
-        </div>
+          </Toolbar>}
+        </Container>
         {isEmpty(places)
-          ? <EmptyPlaces />
+          ? <EmptyPlaces
+            location={location}
+            category={category}
+            type={type}
+            radius={radius} />
           : <Place
             key={placeId}
             placeId={placeId}
@@ -164,8 +161,7 @@ class Places extends Component {
           {attributions.map(a => a)}
           <img
             src={nightMode ? PoweredByGoogleLight : PoweredByGoogleDark}
-            height={18}
-            width={144}
+            width={144} height={18}
             alt='powered by Google'
             title='powered by Google'
           />
@@ -179,7 +175,8 @@ Places.defaultProps = {
   location: [],
   places: [],
   attributions: [],
-  getNearbyPlaces: noop
+  getNearbyPlaces: noop,
+  clearLocation: noop
 }
 
 export default Places

@@ -1,4 +1,5 @@
 import React from 'react'
+import { concat } from '../../util'
 import './Slider.css'
 
 const Slider = ({
@@ -8,26 +9,26 @@ const Slider = ({
   value,
   step,
   unit,
+  asMultiple,
   onChange
 }) => {
   return (
     <div className='App-slider'>
       <label>{label}</label>
       <div className='control'>
-        {min}
         <input
           type='range'
           step={step}
           min={min}
           max={max}
           value={value}
-          onChange={(e) => setTimeout(onChange(e.target.value), 500)}
+          onChange={(e) => onChange(e.target.value)}
         />
-        {max}
       </div>
       <div className='control-value'>
-        <div className='value'>{value}</div>
-        {unit}
+        {asMultiple
+          ? concat(value, unit)
+          : `${value} ${unit}`}
       </div>
     </div>
   )

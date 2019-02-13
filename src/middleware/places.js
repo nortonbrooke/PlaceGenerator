@@ -7,7 +7,8 @@ import split from 'lodash/split'
 import {
   setRequested,
   setError,
-  setPlaces
+  setPlaces,
+  setRandom
 } from '../actions/places'
 
 const googleMapsClient = GoogleMaps.createClient({
@@ -17,8 +18,9 @@ const googleMapsClient = GoogleMaps.createClient({
 export const getNearbyPlaces = (dispatch, props) => {
   const {
     location,
+    type,
     radius,
-    type
+    priceLevel
   } = props
   let parsedType = split(type, ':')
   let request = {
@@ -30,12 +32,19 @@ export const getNearbyPlaces = (dispatch, props) => {
   if (!isEqual(radius, 0)) {
     request = {
       ...request,
-      radius: radius * Constants.MILES_TO_METERS
+      radius: parseInt(radius) * Constants.MILES_TO_METERS
     }
   } else {
     request = {
       ...request,
       rankby: 'distance'
+    }
+  }
+  if (!isEqual(priceLevel, 0)) {
+    request = {
+      ...request,
+      minprice: parseInt(priceLevel),
+      maxprice: parseInt(priceLevel)
     }
   }
   dispatch(setRequested())
@@ -50,6 +59,7 @@ export const getNearbyPlaces = (dispatch, props) => {
       if (isEmpty(places)) {
         dispatch(setError())
       } else {
+        dispatch(setRandom(places.length))
         dispatch(setPlaces(places, attributions))
       }
     }

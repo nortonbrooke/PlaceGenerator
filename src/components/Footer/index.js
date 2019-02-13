@@ -1,15 +1,11 @@
 import { connect } from 'react-redux'
-import { toggleFooter } from '../../actions/main'
 import Footer from './Footer'
 
 const mapStateToProps = state => ({
-  nightMode: state.main.nightMode,
-  showFooter: state.main.showFooter
+  nightMode: state.main.nightMode
 })
 
-const mapDispatchToProps = dispatch => ({
-  toggleFooter: () => dispatch(toggleFooter())
-})
+const mapDispatchToProps = dispatch => ({})
 
 export default connect(
   mapStateToProps,

@@ -1,13 +1,13 @@
 .App-radius {
   height: 20px;
   width: 20px;
-  border: 2px solid #F4B400;
+  border: 2px solid #F5B400;
   border-radius: 50%;
   position: relative;
 }
 
 .App-radius .center {
-  background-color: #F4B400;
+  background-color: #F5B400;
   width: 4px;
   height: 4px;
   border-radius: 50%;
@@ -17,7 +17,7 @@
 }
 
 .App-radius .radius {
-  background-color: #F4B400;
+  background-color: #F5B400;
   width: 10px;
   height: 2px;
   position: absolute;
@@ -35,4 +35,16 @@
 
 .App-radius.white .radius {
   background-color: #FFFFFF;
+}
+
+.App-radius.black {
+  border-color: #000000;
+}
+
+.App-radius.black .center {
+  background-color: #000000;
+}
+
+.App-radius.black .radius {
+  background-color: #000000;
 }

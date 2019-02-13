@@ -29,7 +29,7 @@
 /* ---------------- App Day/Night Styles ---------------- */
 .App.day .App-nav button.selected {
   color: #FFFFFF;
-  background: #4285F4;
+  background: #326ADF;
 }
 
 .App.night .App-nav button.selected {

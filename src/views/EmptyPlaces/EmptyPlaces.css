@@ -4,13 +4,18 @@
   justify-content: center;
 }
 
-.App-place.empty.request {
-  background: #4285F4;
+.App-place.empty.location {
+  font-size: 12px;
+  flex-direction: column;
+}
+
+.App-place.location button {
+  margin: 8px;
 }
 
 .App-place.empty.request button {
   color: #FFFFFF;
-  background-color: #4285F4;
+  background-color: #326ADF;
   border-color: #FFFFFF;
   width: 64px;
 }
