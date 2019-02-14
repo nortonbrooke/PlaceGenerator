@@ -3,7 +3,7 @@
   font-size: 38px;
   display: flex;
   align-items: flex-end;
-  justify-content: center;
+  justify-content: flex-end;
   cursor: pointer;
   user-select: none;
   margin: 8px;
@@ -11,6 +11,4 @@
 
 .App-header .mode-icon {
   margin-right: 8px;
-  position: absolute;
-  right: 0px;
 }

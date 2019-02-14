@@ -49,7 +49,7 @@ class Place extends Component {
     return (<div className='App-place flipInY'
       style={{borderColor: color}}>
       <div className='content'>
-        {distance && <div className='distance flipInX'
+        {distance && <div className='distance'
           title='Place distance'
           style={{ color: color }}>
           {distance}
@@ -58,7 +58,7 @@ class Place extends Component {
           title={name}>
           {name}
         </div>
-        <div className='detail flipInX'>
+        <div className='detail'>
           {hours && <div className='hours'
             title="Today's hours">
             {hours.map((h) => <span key={h}>{h}</span>)}
@@ -69,7 +69,8 @@ class Place extends Component {
             </div>}
             {priceLevel && <div className='price' title='Price Level'>{concat(priceLevel, '$')}</div>}
           </div>
-          <input type='text' value={address} ref={(el) => { this.addressInput = el }} />
+          <input type='text' readOnly value={address}
+            ref={(el) => { this.addressInput = el }} />
           <div>
             {address && <button className='small'
               title='Copy place address'

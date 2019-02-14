@@ -3,10 +3,12 @@ import { getLocation } from '../../middleware/main'
 import EmptyPlaces from './EmptyPlaces'
 
 const mapStateToProps = state => ({
-  location: state.main.location,
   locationRequested: state.main.locationRequested,
+  locationAuthorized: state.main.locationAuthorized,
+  locationError: state.main.locationError,
+  locationErrorMessage: state.main.errorMessage,
   placesRequested: state.places.requested,
-  error: state.places.error
+  placesError: state.places.error
 })
 
 const mapDispatchToProps = (dispatch, props) => ({

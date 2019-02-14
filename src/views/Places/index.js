@@ -1,7 +1,10 @@
 import { connect } from 'react-redux'
 import get from 'lodash/get'
 import isEqual from 'lodash/isEqual'
-import { clearLocation } from '../../middleware/main'
+import {
+  clearLocation,
+  getLocation
+} from '../../middleware/main'
 import { getNearbyPlaces } from '../../middleware/places'
 import {
   setCategory,
@@ -27,6 +30,7 @@ const getPlaceId = (state) => {
 
 const mapStateToProps = state => ({
   location: state.main.location,
+  locationAuthorized: state.main.locationAuthorized,
   nightMode: state.main.nightMode,
   requested: state.places.requested,
   places: getPlace(state),
@@ -42,6 +46,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
+  getLocation: () => getLocation(dispatch),
   clearLocation: () => clearLocation(dispatch),
   setCategory: (category) => dispatch(setCategory(category)),
   setType: (type) => dispatch(setType(type)),

@@ -1,15 +1,21 @@
+import Cookies from 'cookies-js'
+import isEqual from 'lodash/isEqual'
 import {
   SET_LOCATION_REQUESTED,
+  SET_LOCATION_AUTHORIZED,
   SET_LOCATION,
+  SET_LOCATION_ERROR,
   SET_NIGHT_MODE,
-  TOGGLE_COOKIE_BANNER
+  COOKIES_AUTHORIZED
  } from '../actions/main'
 
 const initialState = {
-  locationRequested: false,
   location: [],
+  locationRequested: false,
+  locationError: false,
+  locationAuthorized: isEqual(Cookies.get('locationAuthorized'), 'true'),
   nightMode: false,
-  showCookieBanner: true
+  cookiesAuthorized: isEqual(Cookies.get('cookiesAuthorized'), 'true')
 }
 
 export default (state = initialState, action) => {
@@ -18,18 +24,30 @@ export default (state = initialState, action) => {
       return {...state,
         locationRequested: action.requested
       }
+    case SET_LOCATION_AUTHORIZED:
+      return {...state,
+        locationAuthorized: action.value
+      }
     case SET_LOCATION:
       return {...state,
         location: action.location,
-        locationRequested: false
+        locationRequested: false,
+        locationError: false
+      }
+    case SET_LOCATION_ERROR:
+      return {...state,
+        location: [],
+        locationRequested: false,
+        locationError: true,
+        errorMessage: action.message
       }
     case SET_NIGHT_MODE:
       return {...state,
         nightMode: action.nightMode
       }
-    case TOGGLE_COOKIE_BANNER:
+    case COOKIES_AUTHORIZED:
       return {...state,
-        showCookieBanner: !state.showCookieBanner
+        cookiesAuthorized: true
       }
     default:
       return state

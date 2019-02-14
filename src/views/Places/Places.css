@@ -13,6 +13,7 @@
 
 .App-places .price-level span {
   position: absolute;
+  padding-bottom: 3px;
 }
 
 .App-places .attributions {

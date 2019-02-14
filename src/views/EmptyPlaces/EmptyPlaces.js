@@ -1,22 +1,27 @@
 import React, { Component } from 'react'
-import isEmpty from 'lodash/isEmpty'
 import Spinner from '../../components/Spinner'
 import './EmptyPlaces.css'
 
 class EmptyPlaces extends Component {
   render () {
     const {
-      location,
       locationRequested,
+      locationAuthorized,
+      locationError,
+      locationErrorMessage,
       getLocation,
       placesRequested,
-      error
+      placesError
     } = this.props
-    if (locationRequested || placesRequested) {
+    if (placesRequested) {
       return (<div className='App-place empty loading'>
         <Spinner className='pulse' />
       </div>)
-    } else if (isEmpty(location)) {
+    } else if (locationRequested) {
+      return (<div className='App-place empty location'>
+        Requesting your location
+      </div>)
+    } else if (!locationAuthorized && !locationError) {
       return (<div className='App-place empty location'>
         <div>
           This site needs access to your location <br />
@@ -28,9 +33,13 @@ class EmptyPlaces extends Component {
           Enable location services
         </button>
       </div>)
-    } else if (error) {
-      return (<div className='App-place empty'>
-        No places found
+    } else if (locationError) {
+      return (<div className='App-place empty location'>
+        {locationErrorMessage}
+      </div>)
+    } else if (placesError) {
+      return (<div className='App-place empty no-places-found'>
+        No places were found
       </div>)
     } else {
       return (<div className='App-place empty'>

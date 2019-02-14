@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { toggleCookieBanner } from './actions/main'
+import { cookieAuthorization } from './middleware/main'
 import Ad from './components/Ad'
 import Alert from './components/Alert'
 import Header from './components/Header'
@@ -18,8 +18,8 @@ class App extends Component {
   render () {
     const {
       nightMode,
-      showCookieBanner,
-      toggleCookieBanner
+      cookiesAuthorized,
+      authorizeCookieUse
     } = this.props
 
     const CookieBanner = () => (<Alert className='bottom'>
@@ -29,7 +29,7 @@ class App extends Component {
       </p>
       <button
         className='small'
-        onClick={() => toggleCookieBanner()}>
+        onClick={() => authorizeCookieUse()}>
         Accept
     </button>
     </Alert>)
@@ -51,7 +51,7 @@ class App extends Component {
                   <Header />
                   <Places />
                   <Ad />
-                  {showCookieBanner && <CookieBanner />}
+                  {!cookiesAuthorized && <CookieBanner />}
                   <Footer />
                 </div>
               )
@@ -68,11 +68,11 @@ class App extends Component {
 
 const mapStateToProps = state => ({
   nightMode: state.main.nightMode,
-  showCookieBanner: state.main.showCookieBanner
+  cookiesAuthorized: state.main.cookiesAuthorized
 })
 
 const mapDispatchToProps = dispatch => ({
-  toggleCookieBanner: () => dispatch(toggleCookieBanner())
+  authorizeCookieUse: () => cookieAuthorization(dispatch)
 })
 
 export default connect(

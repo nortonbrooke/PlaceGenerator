@@ -19,6 +19,16 @@ import classnames from 'classnames'
 import './Places.css'
 
 class Places extends Component {
+  componentDidMount () {
+    const {
+      locationAuthorized,
+      getLocation
+    } = this.props
+    if (locationAuthorized) {
+      getLocation()
+    }
+  }
+
   componentWillUnmount () {
     const { clearLocation } = this.props
     clearLocation()
@@ -127,10 +137,10 @@ class Places extends Component {
               onChange={value => setPriceLevel(value)}
             />
           )}
-          {!isEmpty(location) && <Toolbar>
+          <Toolbar>
             <button
               title='Generate places'
-              disabled={isEqual(places.length, 1)}
+              disabled={isEmpty(location) || isEqual(places.length, 1)}
               onClick={(e) => {
                 if (isEmpty(places)) {
                   getNearbyPlaces({
@@ -145,7 +155,7 @@ class Places extends Component {
               }}>
             Generate
             </button>
-          </Toolbar>}
+          </Toolbar>
         </Container>
         {isEmpty(places)
           ? <EmptyPlaces
