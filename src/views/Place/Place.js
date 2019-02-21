@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import isEmpty from 'lodash/isEmpty'
 import noop from 'lodash/noop'
 import { concat } from '../../util'
 import './Place.css'
@@ -11,13 +12,19 @@ class Place extends Component {
     }
   }
 
-  componentDidMount () {
+  componentDidMount() {
     const {
+      location,
+      placeId,
       getDistance,
       getDetail
     } = this.props
-    getDistance()
-    getDetail()
+    if (!isEmpty(location)) {
+      getDistance()
+    }
+    if (placeId) {
+      getDetail()
+    }
   }
 
   copyAddress () {

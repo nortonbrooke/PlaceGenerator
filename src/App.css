@@ -2,8 +2,6 @@
 .App {
   font-size: 14px;
   min-height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -12,6 +10,7 @@
 }
 
 .App-policy {
+  font-size: 12px;
   padding: 0px 8px;
 }
 

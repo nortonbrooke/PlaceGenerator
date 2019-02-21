@@ -33,7 +33,7 @@ const mapStateToProps = state => ({
   locationAuthorized: state.main.locationAuthorized,
   nightMode: state.main.nightMode,
   requested: state.places.requested,
-  places: getPlace(state),
+  places: getPlaces(state),
   attributions: state.places.attributions,
   category: state.places.category,
   type: state.places.type,

@@ -19,7 +19,7 @@ class EmptyPlaces extends Component {
       </div>)
     } else if (locationRequested) {
       return (<div className='App-place empty location'>
-        Requesting your location
+        Requesting your location...
       </div>)
     } else if (!locationAuthorized && !locationError) {
       return (<div className='App-place empty location'>

@@ -2,7 +2,7 @@ import React from 'react'
 import './Ad.css'
 
 const Ad = () => {
-  return (<div className='App-ad'>
+  return (<div id='ad' className='App-ad'>
   
   </div>)
 }

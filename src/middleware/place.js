@@ -1,30 +1,27 @@
-import GoogleMaps from '@google/maps'
-import { Constants } from '../util'
+import axios from 'axios'
+import isEmpty from 'lodash/isEmpty'
 import get from 'lodash/get'
 import {
   setDistance,
   setDetail
 } from '../actions/place'
 
-const googleMapsClient = GoogleMaps.createClient({
-  key: Constants.GOOGLE_API_KEY
-})
-
 export const getDetail = (dispatch, props) => {
   const { placeId } = props
-  const request = {
-    placeid: placeId
+  const params = {
+    placeId: placeId
   }
-  googleMapsClient.place(request, (error, response) => {
-    if (error) {
-      console.log(error)
-      dispatch(setDetail(null, []))
-    }
-    if (response) {
-      const detail = response.json.result
-      const attributions = get(response.json, 'html_attributions')
-      dispatch(setDetail(detail, attributions))
-    }
+  axios.get('/place', {
+    params: params
+  })
+  .then((response) => {
+    const place = get(response.data, 'result')
+    const attributions = get(response.data, 'html_attributions', [])
+    dispatch(setDetail(place, attributions))
+  })
+  .catch((error) =>{
+    console.log(error)
+    dispatch(setDetail(null, []))
   })
 }
 
@@ -33,21 +30,21 @@ export const getDistance = (dispatch, props) => {
     location,
     placeId
   } = props
-  const request = {
-    origins: [location],
-    destinations: 'place_id:' + placeId,
-    units: 'imperial'
+  const params = {
+    location: location,
+    placeId: placeId
   }
-  googleMapsClient.distanceMatrix(request, (error, response) => {
-    if (error) {
-      console.log(error)
-      dispatch(setDistance(null))
-    }
-    if (response) {
-      const rows = response.json.rows
-      const elements = get(rows[0], 'elements')
-      const distance = get(elements[0], 'distance.text')
-      dispatch(setDistance(distance))
-    }
+  axios.get('/distance', {
+    params: params
+  })
+  .then((response) => {
+    const rows = get(response.data, 'rows')
+    const elements = get(rows[0], 'elements')
+    const distance = get(elements[0], 'distance.text')
+    dispatch(setDistance(distance))
+  })
+  .catch((error) =>{
+    console.log(error)
+    dispatch(setDistance(null))
   })
 }

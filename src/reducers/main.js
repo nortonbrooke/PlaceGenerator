@@ -1,4 +1,4 @@
-import Cookies from 'cookies-js'
+import Cookies from 'js-cookie'
 import isEqual from 'lodash/isEqual'
 import {
   SET_LOCATION_REQUESTED,

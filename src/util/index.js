@@ -34,7 +34,6 @@ export const concat = (value, unit) => {
 
 export const Constants = {
   GOOGLE_API_KEY: 'AIzaSyB8UQOm_ywVozK4RCYiC9dwHwOe34fobis',
-  MAILCHIMP_URL: 'https://waidoe.us20.list-manage.com/subscribe/post?u=2646b6337419b34279782eebc&amp;id=2da1ff6e00',
   MILES_TO_METERS: 1609.344,
   EVENTS: {
     GET_NEARBY_PLACES: 'GET_NEARBY_PLACES',

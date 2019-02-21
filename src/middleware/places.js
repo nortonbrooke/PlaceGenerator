@@ -1,4 +1,4 @@
-import GoogleMaps from '@google/maps'
+import axios from 'axios'
 import { Constants } from '../util'
 import get from 'lodash/get'
 import isEmpty from 'lodash/isEmpty'
@@ -11,10 +11,6 @@ import {
   setRandom
 } from '../actions/places'
 
-const googleMapsClient = GoogleMaps.createClient({
-  key: Constants.GOOGLE_API_KEY
-})
-
 export const getNearbyPlaces = (dispatch, props) => {
   const {
     location,
@@ -23,45 +19,48 @@ export const getNearbyPlaces = (dispatch, props) => {
     priceLevel
   } = props
   let parsedType = split(type, ':')
-  let request = {
+  let params = {
+    opennow: true,
     location: location,
     type: parsedType[0],
-    keyword: parsedType.length > 1 ? parsedType[1] : '',
-    opennow: true
+    keyword: parsedType.length > 1 ? parsedType[1] : ''
   }
   if (!isEqual(radius, 0)) {
-    request = {
-      ...request,
+    params = {
+      ...params,
       radius: parseInt(radius) * Constants.MILES_TO_METERS
     }
   } else {
-    request = {
-      ...request,
+    params = {
+      ...params,
       rankby: 'distance'
     }
   }
   if (!isEqual(priceLevel, 0)) {
-    request = {
-      ...request,
+    params = {
+      ...params,
       minprice: parseInt(priceLevel),
       maxprice: parseInt(priceLevel)
     }
   }
   dispatch(setRequested())
-  googleMapsClient.placesNearby(request, (error, response) => {
-    if (error) {
-      console.log(error)
+  axios.get('/nearby', {
+    params: {
+      query: JSON.stringify(params)
+    }
+  })
+  .then((response) => {
+    const places = get(response.data, 'results')
+    const attributions = get(response.data, 'html_attributions', [])
+    if (isEmpty(places)) {
       dispatch(setError())
+    } else {
+      dispatch(setRandom(places.length))
+      dispatch(setPlaces(places, attributions))
     }
-    if (response) {
-      const places = response.json.results
-      const attributions = get(response.json, 'html_attributions')
-      if (isEmpty(places)) {
-        dispatch(setError())
-      } else {
-        dispatch(setRandom(places.length))
-        dispatch(setPlaces(places, attributions))
-      }
-    }
+  })
+  .catch((error) =>{
+    console.log(error)
+    dispatch(setError())
   })
 }

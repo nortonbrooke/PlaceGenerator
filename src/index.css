@@ -12,9 +12,8 @@ select, button, a {
 
 /* Buttons ---------------- */
 button {
-  height: 38px;
-  min-height: 28px;
-  font-size: 16px;
+  height: 32px;
+  font-size: 14px;
   font-weight: 600;
   color: #326ADF;
   border: 2px solid #326ADF;
