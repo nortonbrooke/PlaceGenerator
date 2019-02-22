@@ -7,7 +7,8 @@ export const getNight = (latitude, longitude) => {
   const date = new Date()
   const times = SunCalc.getTimes(date, latitude, longitude)
   const sunset = get(times, 'sunset')
-  return date > sunset
+  const sunrise = get(times, 'sunrise')
+  return date >= sunset || date <= sunrise
 }
 
 export const getOpenHours = (date, data) => {

@@ -27,7 +27,8 @@ class Place extends Component {
     }
   }
 
-  copyAddress (text) {
+  copyAddress (event, text) {
+    event.stopPropagation()
     this.windowCopy(text)
     this.setState({ copied: true })
   }
@@ -65,7 +66,8 @@ class Place extends Component {
     copyToClipboard();
   }
 
-  openTab (url) {
+  openTab (event, url) {
+    event.stopPropagation()
     window.open(url, '_newtab')
   }
 
@@ -109,12 +111,12 @@ class Place extends Component {
           <div>
             {address && <button className='small'
               title='Copy place address'
-              onClick={() => this.copyAddress(address)}>
+              onClick={(e) => this.copyAddress(e, address)}>
               {copied ? 'Copied' : 'Copy Address'}
             </button>}
             {url && <button className='small'
               title='Open place in Google'
-              onClick={() => this.openTab(url)}>
+              onClick={(e) => this.openTab(e, url)}>
               Open in Google
             </button>}
           </div>
