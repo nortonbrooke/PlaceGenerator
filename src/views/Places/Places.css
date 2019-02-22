@@ -2,9 +2,8 @@
   display: flex;
   flex-flow: column nowrap;
   flex: 1;
+  justify-content: space-evenly;
   align-items: center;
-  justify-content: space-between;
-  margin: 8px;
   overflow: hidden;
 }
 

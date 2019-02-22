@@ -21,6 +21,7 @@ button {
   outline: none;
   cursor: pointer;
   background: #FFFFFF;
+  margin: 0px;
 }
 
 button:not(.nav-button) {

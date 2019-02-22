@@ -7,7 +7,7 @@
 
 .App-toolbar select,
 .App-toolbar button {
-  flex: 1
+  flex: 1;
 }
 
 .App-toolbar button {

@@ -6,8 +6,7 @@ import Sun from '../../assets/sun.svg'
 import './Header.css'
 
 const Header = ({ nightMode, setNightMode }) => {
-  return <header className='App-header'
-    onClick={() => setNightMode(!nightMode)}>
+  return <header className='App-header'>
     {/* <img src={nightMode ? LogoLight : LogoDark}
       height={28}
       alt='waidoe'

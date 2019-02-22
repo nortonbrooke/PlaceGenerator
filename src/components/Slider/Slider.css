@@ -1,10 +1,11 @@
 .App-slider {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   font-size: 14px;
   font-weight: 600;
-  padding: 4.5px;
+  height: 32px;
+  padding: 0px 6px;
   margin-bottom: 8px;
   border: 2px solid;
   border-radius: 4px;
@@ -12,30 +13,23 @@
 }
 
 .App-slider label {
-  width: 88px;
+  flex: 1;
 }
 
 .App-slider .control,
 .App-slider .control-value {
   display: flex;
   align-items: center;
+  flex: 2;
 }
 
 .App-slider .control input {
   margin: 0px 4px;
 }
 
-.App-slider .control span {
-  width: 20px;
-}
-
-.App-slider .control span:first-child {
-  text-align: right;
-}
-
 .App-slider .control-value {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  width: 88px;
+  flex: 1;
 }
