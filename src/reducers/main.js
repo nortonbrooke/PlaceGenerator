@@ -6,7 +6,8 @@ import {
   SET_LOCATION,
   SET_LOCATION_ERROR,
   SET_NIGHT_MODE,
-  COOKIES_AUTHORIZED
+  COOKIES_AUTHORIZED,
+  SET_HELP_ACKNOWLEDGED
  } from '../actions/main'
 
 const initialState = {
@@ -15,7 +16,8 @@ const initialState = {
   locationError: false,
   locationAuthorized: isEqual(Cookies.get('locationAuthorized'), 'true'),
   nightMode: false,
-  cookiesAuthorized: isEqual(Cookies.get('cookiesAuthorized'), 'true')
+  cookiesAuthorized: isEqual(Cookies.get('cookiesAuthorized'), 'true'),
+  helpAcknowledged: isEqual(Cookies.get('helpAcknowledged'), 'true')
 }
 
 export default (state = initialState, action) => {
@@ -48,6 +50,10 @@ export default (state = initialState, action) => {
     case COOKIES_AUTHORIZED:
       return {...state,
         cookiesAuthorized: true
+      }
+    case SET_HELP_ACKNOWLEDGED:
+      return {...state,
+        helpAcknowledged: true
       }
     default:
       return state

@@ -7,7 +7,8 @@ import {
   setLocationAuthorized,
   setNightMode,
   setCookiesAuthorized,
-  setLocationError
+  setLocationError,
+  setHelpAcknowledged
 } from '../actions/main'
 
 export const getLocation = (dispatch) => {
@@ -63,4 +64,9 @@ const setLocationCookie = (dispatch, value) => {
 export const cookieAuthorization = (dispatch) => {
   Cookies.set('cookiesAuthorized', true, { expires: Infinity })
   dispatch(setCookiesAuthorized())
+}
+
+export const acknowledgeHelp = (dispatch) => {
+  Cookies.set('helpAcknowledged', true, { expires: Infinity })
+  dispatch(setHelpAcknowledged())
 }

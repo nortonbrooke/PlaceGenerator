@@ -27,12 +27,42 @@ class Place extends Component {
     }
   }
 
-  copyAddress () {
-    if (this.addressInput) {
-      this.addressInput.select()
-      document.execCommand('copy')
-      this.setState({ copied: true })
+  copyAddress (text) {
+    this.windowCopy(text)
+    this.setState({ copied: true })
+  }
+
+  windowCopy (text) {
+    let textArea
+    const isOS = () => {
+        return navigator.userAgent.match(/ipad|iphone/i);
     }
+    const createTextArea = (text) => {
+        textArea = document.createElement('textArea');
+        textArea.value = text;
+        document.body.appendChild(textArea);
+    }
+    const selectText = () => {
+        let range
+        let selection
+        if (isOS()) {
+            range = document.createRange();
+            range.selectNodeContents(textArea);
+            selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            textArea.setSelectionRange(0, 999999);
+        } else {
+            textArea.select();
+        }
+    }
+    const copyToClipboard = () => {        
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+    }
+    createTextArea(text);
+    selectText();
+    copyToClipboard();
   }
 
   openTab (url) {
@@ -76,12 +106,10 @@ class Place extends Component {
             </div>}
             {priceLevel && <div className='price' title='Price Level'>{concat(priceLevel, '$')}</div>}
           </div>
-          <input type='text' readOnly value={address}
-            ref={(el) => { this.addressInput = el }} />
           <div>
             {address && <button className='small'
               title='Copy place address'
-              onClick={() => this.copyAddress()}>
+              onClick={() => this.copyAddress(address)}>
               {copied ? 'Copied' : 'Copy Address'}
             </button>}
             {url && <button className='small'

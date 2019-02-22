@@ -4,6 +4,7 @@ export const SET_LOCATION_AUTHORIZED = 'SET_LOCATION_AUTHORIZED'
 export const SET_LOCATION_ERROR = 'SET_LOCATION_ERROR'
 export const SET_NIGHT_MODE = 'SET_NIGHT_MODE'
 export const COOKIES_AUTHORIZED = 'COOKIES_AUTHORIZED'
+export const SET_HELP_ACKNOWLEDGED = 'SET_HELP_ACKNOWLEDGED'
 
 export const setLocationRequested = (requested) => {
   return {
@@ -43,5 +44,11 @@ export const setNightMode = (nightMode) => {
 export const setCookiesAuthorized = () => {
   return {
     type: COOKIES_AUTHORIZED
+  }
+}
+
+export const setHelpAcknowledged = () => {
+  return {
+    type: SET_HELP_ACKNOWLEDGED
   }
 }

@@ -13,8 +13,6 @@ import Select from '../../components/Select'
 import Radius from '../../assets/Radius'
 import EmptyPlaces from '../EmptyPlaces'
 import Place from '../Place'
-import CloverLight from '../../assets/clover-light.svg'
-import CloverDark from '../../assets/clover-dark.svg'
 import PoweredByGoogleDark from '../../assets/powered_by_google_on_white_hdpi.png'
 import PoweredByGoogleLight from '../../assets/powered_by_google_on_non_white_hdpi.png'
 import classnames from 'classnames'
@@ -155,11 +153,7 @@ class Places extends Component {
                   setRandom()
                 }
               }}>
-              <span>Go</span>
-              <img src={nightMode ? CloverLight : CloverDark}
-                height={12}
-                className='clover-icon'
-                alt='Generate' />
+              Generate
             </button>
           </Toolbar>
         </Container>

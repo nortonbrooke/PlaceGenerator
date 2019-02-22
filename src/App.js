@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { cookieAuthorization } from './middleware/main'
+import { 
+  cookieAuthorization,
+  acknowledgeHelp
+} from './middleware/main'
 import Alert from './components/Alert'
-import Header from './components/Header'
 import Footer from './components/Footer'
 import Places from './views/Places'
 import TermsOfService from './views/Legal/TermsOfService'
@@ -17,13 +19,26 @@ class App extends Component {
   render () {
     const {
       nightMode,
+      helpAcknowledged,
+      acknowledgeHelp,
       cookiesAuthorized,
       authorizeCookieUse
     } = this.props
 
-    const CookieBanner = () => (<Alert className='bottom'>
+    const HelpBanner = () => (<Alert>
       <p>
-        This site uses cookies to offer you a better experience, analyze site traffic, and serve targeted advertisements.
+        Can't decide where to eat or hang out? Generate random places nearby for food and enteratinment.
+      </p>
+      <button
+        className='small'
+        onClick={() => acknowledgeHelp()}>
+        Dismiss
+      </button>
+    </Alert>)
+
+    const CookieBanner = () => (<Alert>
+      <p>
+        This site uses cookies to offer you a better experience and analyze site traffic.
         By continuing to use this site, you consent to the use of cookies outlined in our <Link to='/cookies'>Cookie Policy</Link>.
       </p>
       <button
@@ -47,7 +62,7 @@ class App extends Component {
                     night: nightMode
                   })}
                 >
-                  <Header />
+                  {!helpAcknowledged && <HelpBanner />}
                   <Places />
                   {!cookiesAuthorized && <CookieBanner />}
                   <Footer />
@@ -66,10 +81,12 @@ class App extends Component {
 
 const mapStateToProps = state => ({
   nightMode: state.main.nightMode,
+  helpAcknowledged: state.main.helpAcknowledged,
   cookiesAuthorized: state.main.cookiesAuthorized
 })
 
 const mapDispatchToProps = dispatch => ({
+  acknowledgeHelp: () => acknowledgeHelp(dispatch),
   authorizeCookieUse: () => cookieAuthorization(dispatch)
 })
 

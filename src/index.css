@@ -42,5 +42,6 @@ button:disabled {
 }
 
 a {
+  text-decoration: none;
   color: inherit;
 }

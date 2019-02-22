@@ -11,3 +11,7 @@
 .App-alert p {
   margin-right: 8px;
 }
+
+.App-alert a {
+  text-decoration: underline;
+}
