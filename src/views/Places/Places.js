@@ -4,7 +4,7 @@ import isEmpty from 'lodash/isEmpty'
 import isNil from 'lodash/isNil'
 import noop from 'lodash/noop'
 import shortid from 'shortid'
-import { Categories, getCategoryTypes } from '../../util'
+import { Categories, getCategoryTypes } from '../../Categories'
 import Container from '../../components/Container'
 import Nav from '../../components/Nav'
 import Slider from '../../components/Slider'
@@ -13,6 +13,8 @@ import Select from '../../components/Select'
 import Radius from '../../assets/Radius'
 import EmptyPlaces from '../EmptyPlaces'
 import Place from '../Place'
+import CloverLight from '../../assets/clover-light.svg'
+import CloverDark from '../../assets/clover-dark.svg'
 import PoweredByGoogleDark from '../../assets/powered_by_google_on_white_hdpi.png'
 import PoweredByGoogleLight from '../../assets/powered_by_google_on_non_white_hdpi.png'
 import classnames from 'classnames'
@@ -139,7 +141,7 @@ class Places extends Component {
           )}
           <Toolbar>
             <button
-              title='Generate places'
+              title='Generate place'
               disabled={isEmpty(location) || isEqual(places.length, 1)}
               onClick={(e) => {
                 if (isEmpty(places)) {
@@ -153,7 +155,11 @@ class Places extends Component {
                   setRandom()
                 }
               }}>
-            Generate
+              <span>Go</span>
+              <img src={nightMode ? CloverLight : CloverDark}
+                height={12}
+                className='clover-icon'
+                alt='Generate' />
             </button>
           </Toolbar>
         </Container>

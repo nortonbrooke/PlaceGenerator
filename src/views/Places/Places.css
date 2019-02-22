@@ -25,3 +25,7 @@
   margin-top: 4px; 
   display: block;
 }
+
+.App-places .clover-icon {
+  margin: 1px 0px 0px 4px;
+}

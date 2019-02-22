@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { cookieAuthorization } from './middleware/main'
-import Ad from './components/Ad'
 import Alert from './components/Alert'
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -25,7 +24,7 @@ class App extends Component {
     const CookieBanner = () => (<Alert className='bottom'>
       <p>
         This site uses cookies to offer you a better experience, analyze site traffic, and serve targeted advertisements.
-        By continuing to use this site, you consent to the use of cookies outlined in our <Link to='/cookie-policy'>Cookie Policy</Link>.
+        By continuing to use this site, you consent to the use of cookies outlined in our <Link to='/cookies'>Cookie Policy</Link>.
       </p>
       <button
         className='small'
@@ -50,16 +49,15 @@ class App extends Component {
                 >
                   <Header />
                   <Places />
-                  <Ad />
                   {!cookiesAuthorized && <CookieBanner />}
                   <Footer />
                 </div>
               )
             }}
           />
-          <Route path='/terms-of-service' component={TermsOfService} />
-          <Route path='/privacy-policy' component={PrivacyPolicy} />
-          <Route path='/cookie-policy' component={CookiePolicy} />
+          <Route path='/terms' component={TermsOfService} />
+          <Route path='/privacy' component={PrivacyPolicy} />
+          <Route path='/cookies' component={CookiePolicy} />
         </div>
       </Router>
     )

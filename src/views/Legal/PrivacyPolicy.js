@@ -171,7 +171,7 @@ const PrivacyPolicy = () => {
         </a>
         , to enable you to opt-out of Google's programs.
       </p>
-      <h4>Google AdSense</h4>
+      {/* <h4>Google AdSense</h4>
       <p>
         Our website uses Google AdSense for advertising. Third party vendors,
         including Google, use cookies to serve ads based on a user's prior
@@ -183,7 +183,7 @@ const PrivacyPolicy = () => {
         (Alternatively, you can opt out of a third-party vendor's use of cookies
         for personalized advertising by visiting{' '}
         <a href='https://www.aboutads.info'>www.aboutads.info</a>).
-      </p>
+      </p> */}
       <h3>5. Google Maps API(s)</h3>
       <p>
         Our website uses Google Maps API(s) to provide a better experience. Please
@@ -289,7 +289,7 @@ const PrivacyPolicy = () => {
         stores on your computer, and accesses each time you visit, so we can
         understand how you use our website. This helps us serve you content based
         on preferences you have specified. Please refer to our{' '}
-        <Link to='/cookie-policy'>Cookie Policy</Link> for more information.
+        <Link to='/cookies'>Cookie Policy</Link> for more information.
       </p>
       <h3>9. Business transfers</h3>
       <p>

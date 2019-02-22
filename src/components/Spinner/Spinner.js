@@ -8,8 +8,7 @@ const Spinner = ({ nightMode, className, children }) => {
     <img src={nightMode ? MarkerLight : MarkerDark}
       className={className}
       width={60}
-      alt='Loading'
-      title='loading' />
+      alt='' />
     {children}
   </div>
 }

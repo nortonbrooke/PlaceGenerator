@@ -1,4 +1,5 @@
-import { Categories, getDefaultType, palette } from '../util'
+import { Categories, getDefaultType } from '../Categories'
+import Palette from '../Palette'
 import isEqual from 'lodash/isEqual'
 
 import {
@@ -82,7 +83,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         index: state.index + 1,
-        color: palette[state.paletteIndex % palette.length],
+        color: Palette[state.paletteIndex % Palette.length],
         paletteIndex: state.paletteIndex + 1
       }
     }
@@ -90,7 +91,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         index: state.index + 1,
-        color: palette[state.paletteIndex % palette.length],
+        color: Palette[state.paletteIndex % Palette.length],
         paletteIndex: state.paletteIndex + 1
       }
     }
@@ -110,7 +111,7 @@ export default (state = initialState, action) => {
         ...state,
         index: index,
         indexTracker: tracker,
-        color: palette[state.paletteIndex % palette.length],
+        color: Palette[state.paletteIndex % Palette.length],
         paletteIndex: state.paletteIndex + 1
       }
     case RESET:

@@ -1,13 +1,8 @@
 .App-header {
-  width: 100%;
-  font-size: 38px;
+  font-size: 12px;
   display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-between;
   user-select: none;
-  margin-top: 8px;
-}
-
-.App-header .mode-icon {
-  margin-right: 8px;
+  margin: 8px;
 }

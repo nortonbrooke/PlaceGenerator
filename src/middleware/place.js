@@ -1,5 +1,4 @@
 import axios from 'axios'
-import isEmpty from 'lodash/isEmpty'
 import get from 'lodash/get'
 import {
   setDistance,

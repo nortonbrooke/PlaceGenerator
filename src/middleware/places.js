@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { Constants } from '../util'
 import get from 'lodash/get'
 import isEmpty from 'lodash/isEmpty'
 import isEqual from 'lodash/isEqual'
@@ -10,6 +9,8 @@ import {
   setPlaces,
   setRandom
 } from '../actions/places'
+
+const MILES_TO_METERS = 1609.344
 
 export const getNearbyPlaces = (dispatch, props) => {
   const {
@@ -28,7 +29,7 @@ export const getNearbyPlaces = (dispatch, props) => {
   if (!isEqual(radius, 0)) {
     params = {
       ...params,
-      radius: parseInt(radius) * Constants.MILES_TO_METERS
+      radius: parseInt(radius) * MILES_TO_METERS
     }
   } else {
     params = {
