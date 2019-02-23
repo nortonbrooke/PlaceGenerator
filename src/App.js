@@ -25,7 +25,7 @@ class App extends Component {
       authorizeCookieUse
     } = this.props
 
-    const HelpBanner = () => (<Alert>
+    const HelpText = () => (<Alert>
       <p>
         Can't decide where to eat or hang out? Generate random places nearby for food and enteratinment.
       </p>
@@ -36,7 +36,7 @@ class App extends Component {
       </button>
     </Alert>)
 
-    const CookieBanner = () => (<Alert>
+    const CookieBanner = () => (<Alert banner>
       <p>
         This site uses cookies to offer you a better experience and analyze site traffic.
         By continuing to use this site, you consent to the use of cookies outlined in our <Link to='/cookies'>Cookie Policy</Link>.
@@ -62,7 +62,7 @@ class App extends Component {
                     night: nightMode
                   })}
                 >
-                  {!helpAcknowledged && <HelpBanner />}
+                  {!helpAcknowledged && <HelpText />}
                   <Places />
                   {!cookiesAuthorized && <CookieBanner />}
                   <Footer />
