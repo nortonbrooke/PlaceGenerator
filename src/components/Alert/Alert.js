@@ -1,9 +1,8 @@
 import React from 'react'
-import classnames from 'classnames'
 import './Alert.css'
 
-const Alert = ({ children, banner }) => {
-  return (<div className={classnames('App-alert', {banner: banner})}>
+const Alert = ({ children }) => {
+  return (<div className='App-alert'>
     {children}
   </div>)
 }

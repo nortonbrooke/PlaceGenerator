@@ -7,10 +7,6 @@
   justify-content: space-between;
 }
 
-.App-alert.banner {
-  border: 1px solid;
-}
-
 .App-alert p {
   margin-right: 8px;
 }

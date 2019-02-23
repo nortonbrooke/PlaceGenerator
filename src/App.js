@@ -36,15 +36,14 @@ class App extends Component {
       </button>
     </Alert>)
 
-    const CookieBanner = () => (<Alert banner>
+    const CookieBanner = () => (<Alert>
       <p>
-        This site uses cookies to offer you a better experience and analyze site traffic.
-        By continuing to use this site, you consent to the use of cookies outlined in our <Link to='/cookies'>Cookie Policy</Link>.
+        By continuing to use the site, you consent to the use of cookies. <Link to='/cookies'>Read More</Link>.
       </p>
       <button
         className='small'
         onClick={() => authorizeCookieUse()}>
-        Accept
+        Dismiss
     </button>
     </Alert>)
 
