@@ -19,22 +19,9 @@ class App extends Component {
   render () {
     const {
       nightMode,
-      helpAcknowledged,
-      acknowledgeHelp,
       cookiesAuthorized,
       authorizeCookieUse
     } = this.props
-
-    const HelpText = () => (<Alert>
-      <p>
-        Can't decide where to eat or hang out? Generate random places nearby for food and enteratinment.
-      </p>
-      <button
-        className='small'
-        onClick={() => acknowledgeHelp()}>
-        Dismiss
-      </button>
-    </Alert>)
 
     const CookieBanner = () => (<Alert>
       <p>
@@ -61,7 +48,6 @@ class App extends Component {
                     night: nightMode
                   })}
                 >
-                  {!helpAcknowledged && <HelpText />}
                   <Places />
                   {!cookiesAuthorized && <CookieBanner />}
                   <Footer />

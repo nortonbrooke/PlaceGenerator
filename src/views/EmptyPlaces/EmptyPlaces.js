@@ -25,12 +25,12 @@ class EmptyPlaces extends Component {
       return (<div className='App-place empty location'>
         <div>
           This site needs access to your location <br />
-          to find places near you
+          to find places nearby
         </div>
         <button
           className='small'
           onClick={() => getLocation()}>
-          Enable location services
+          Find me
         </button>
       </div>)
     } else if (locationError) {
