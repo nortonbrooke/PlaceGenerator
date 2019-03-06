@@ -30,12 +30,17 @@ class EmptyPlaces extends Component {
         <button
           className='small'
           onClick={() => getLocation()}>
-          Find me
+          Send location
         </button>
       </div>)
     } else if (locationError) {
       return (<div className='App-place empty location'>
         {locationErrorMessage}
+        <button
+          className='small'
+          onClick={() => getLocation()}>
+          Try again
+        </button>
       </div>)
     } else if (placesError) {
       return (<div className='App-place empty no-places-found'>
