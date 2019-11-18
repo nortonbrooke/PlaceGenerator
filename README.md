@@ -1,10 +1,6 @@
 # Waidoe Web
 
-__Set up__  
-
 `npm install`
-
-__Run Dev__
 
 `npm run start`
 
