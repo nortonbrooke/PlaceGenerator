@@ -19,6 +19,7 @@ export const getNearbyPlaces = (dispatch, props) => {
     radius,
     priceLevel
   } = props
+
   let parsedType = split(type, ':')
   let params = {
     opennow: true,
@@ -26,6 +27,8 @@ export const getNearbyPlaces = (dispatch, props) => {
     type: parsedType[0],
     keyword: parsedType.length > 1 ? parsedType[1] : ''
   }
+
+  // Add radius
   if (!isEqual(radius, 0)) {
     params = {
       ...params,
@@ -37,6 +40,8 @@ export const getNearbyPlaces = (dispatch, props) => {
       rankby: 'distance'
     }
   }
+
+  // Add price level
   if (!isEqual(priceLevel, 0)) {
     params = {
       ...params,
@@ -44,13 +49,16 @@ export const getNearbyPlaces = (dispatch, props) => {
       maxprice: parseInt(priceLevel)
     }
   }
+ 
+  // Set loading
   dispatch(setRequested())
+
+  // Request places
   axios.get('/nearby', {
     params: {
       query: JSON.stringify(params)
     }
-  })
-  .then((response) => {
+  }).then((response) => {
     const places = get(response.data, 'results')
     const attributions = get(response.data, 'html_attributions', [])
     if (isEmpty(places)) {

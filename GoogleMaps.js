@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const GOOGLE_API_KEY = 'AIzaSyB8UQOm_ywVozK4RCYiC9dwHwOe34fobis'
+const GOOGLE_API_KEY = 'AIzaSyCcySEml6U46lKz4hDaBCKy9cY447auFF0'
 
 const googleMapsClient = require('@google/maps').createClient({
     key: GOOGLE_API_KEY

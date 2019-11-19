@@ -13,12 +13,12 @@
   ],
   "dependencies": {
     "@google/maps": "^0.5.5",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "classnames": "^2.2.6",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "js-cookie": "^2.2.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.15",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-redux": "^6.0.0",
@@ -30,11 +30,11 @@
     "suncalc": "^1.8.0"
   },
   "scripts": {
-    "start": "PORT=8080 node server.js",
-    "start-dev": "react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "PORT=8080 node server.js"
   },
   "engines": {
     "node": "10.x"
