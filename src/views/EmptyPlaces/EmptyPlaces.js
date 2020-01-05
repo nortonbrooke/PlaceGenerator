@@ -30,7 +30,7 @@ class EmptyPlaces extends Component {
         <button
           className='small'
           onClick={() => getLocation()}>
-          Send location
+          Share location
         </button>
       </div>)
     } else if (locationError) {

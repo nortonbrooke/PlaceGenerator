@@ -3,7 +3,7 @@ import React from 'react'
 const TermsOfService = () => {
   return (
     <div className='App-policy'>
-      <h2>Waidoe Corporation Terms of Service</h2>
+      <h2>Terms of Service</h2>
       <h3>1. Terms</h3>
       <p>
         By accessing the website at{' '}
@@ -29,7 +29,7 @@ const TermsOfService = () => {
       <ol type='a'>
         <li>
           Permission is granted to temporarily download one copy of the
-          materials (information or software) on Waidoe Corporation's website
+          materials (information or software) on this website
           for personal, non-commercial transitory viewing only. This is the
           grant of a license, not a transfer of title, and under this license
           you may not:
@@ -41,7 +41,7 @@ const TermsOfService = () => {
             </li>
             <li>
               attempt to de-compile or reverse engineer any software contained
-              on Waidoe Corporation's website
+              on this website
             </li>
             <li>
               remove any copyright or other proprietary notations from the
@@ -65,7 +65,7 @@ const TermsOfService = () => {
       <h3>4. Disclaimer</h3>
       <ol type='a'>
         <li>
-          The materials on Waidoe Corporation's website are provided on an 'as
+          The materials on this website are provided on an 'as
           is' basis. Waidoe Corporation makes no warranties, expressed or
           implied, and hereby disclaims and negates all other warranties
           including, without limitation, implied warranties or conditions of
@@ -85,7 +85,7 @@ const TermsOfService = () => {
         In no event shall Waidoe Corporation or its suppliers be liable for
         any damages (including, without limitation, damages for loss of data
         or profit, or due to business interruption) arising out of the use or
-        inability to use the materials on Waidoe Corporation's website, even
+        inability to use the materials on this website, even
         if Waidoe Corporation or a Waidoe Corporation authorized
         representative has been notified orally or in writing of the
         possibility of such damage. Because some jurisdictions do not allow
@@ -95,7 +95,7 @@ const TermsOfService = () => {
       </p>
       <h3>6. Accuracy of materials</h3>
       <p>
-        The materials appearing on Waidoe Corporation's website could include
+        The materials appearing on this website could include
         technical, typographical, or photographic errors. Waidoe Corporation
         does not warrant that any of the materials on its website are
         accurate, complete or current. Waidoe Corporation may make changes to

@@ -7,7 +7,7 @@ const CookiePolicy = () => {
       <p>
         We use cookies to help improve your experience of{" "}
         <a href="https://waidoe.com">https://waidoe.com</a>. This cookie
-        policy is part of Waidoe Corporation's privacy policy, and covers the
+        policy is part of the privacy policy, and covers the
         use of cookies between your device and our website. We also provide
         basic information on third-party services we may use, who may also use
         cookies as part of their service, though they are not covered by our
@@ -93,7 +93,7 @@ const CookiePolicy = () => {
         order to deliver the services they are providing. Third-party cookies
         can be used to track you on other websites that use the same
         third-party service. As we have no control over third-party cookies,
-        they are not covered by Waidoe Corporation's cookie policy.
+        they are not covered by the cookie policy.
       </p>
       <h4>Our third-party privacy promise</h4>
       <p>

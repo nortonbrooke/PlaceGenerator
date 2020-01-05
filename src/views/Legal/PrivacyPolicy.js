@@ -6,7 +6,7 @@ const PrivacyPolicy = () => {
     <div className='App-policy'>
       <h2>Privacy Policy</h2>
       <p>
-        Your privacy is important to us. It is Waidoe Corporation's policy to
+        Your privacy is important to us. It is our policy to
         respect your privacy regarding any information we may collect from you
         across our website, <a href='https://waidoe.com'>https://waidoe.com</a>,
         and other websites we own and operate.
