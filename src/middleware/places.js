@@ -59,13 +59,17 @@ export const getNearbyPlaces = (dispatch, props) => {
       query: JSON.stringify(params)
     }
   }).then((response) => {
-    const places = get(response.data, 'results')
-    const attributions = get(response.data, 'html_attributions', [])
-    if (isEmpty(places)) {
+    try {
+      const places = get(response.data, 'results')
+      const attributions = get(response.data, 'html_attributions', [])
+      if (isEmpty(places)) {
+        dispatch(setError())
+      } else {
+        dispatch(setPlaces(places, attributions))
+        dispatch(setRandom())
+      }
+    } catch (error) {
       dispatch(setError())
-    } else {
-      dispatch(setRandom(places.length))
-      dispatch(setPlaces(places, attributions))
     }
   })
   .catch((error) =>{

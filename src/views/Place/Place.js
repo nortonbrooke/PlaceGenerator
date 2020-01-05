@@ -85,9 +85,7 @@ class Place extends Component {
       attributions
     } = this.props
     const { copied } = this.state
-    return (<div className='App-place flipInY'
-      style={{ borderColor: color }}>
-
+    return (<div className='App-place flipInY' style={{ borderColor: color }}>
       {distance && <div className='distance'
         title='Place distance'
         style={{ color: color }}>
@@ -104,9 +102,9 @@ class Place extends Component {
         </div>}
         <div className='stats'>
           {rating && <div title='Rating'>
-            <span>{rating} &#9733; {totalRatings} review{totalRatings > 1 ? 's' : ''}</span>
+            <span>{rating} &#9733; ({totalRatings})</span>
           </div>}
-          {priceLevel && <div className='price' title='Price Level'>{concat(priceLevel, '$')}</div>}
+          · {priceLevel && <div className='price' title='Price Level'>{concat(priceLevel, '$')}</div>}
         </div>
         <div>
           {address && <button className='small'

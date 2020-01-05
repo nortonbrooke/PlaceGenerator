@@ -27,6 +27,8 @@
   text-align: center;
   white-space: normal;
   overflow: hidden;
+  max-width: 265px;
+  max-height: 85px;
 }
 
 .App-place .detail {

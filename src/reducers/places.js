@@ -26,7 +26,6 @@ const initialState = {
   radius: 0,
   priceLevel: 0,
   index: 0,
-  indexTracker: new Set(),
   paletteIndex: 0
 }
 
@@ -95,25 +94,15 @@ export default (state = initialState, action) => {
         paletteIndex: state.paletteIndex + 1
       }
     }
-    case SET_RANDOM:
-      const available = action.count || state.places.length
-      const getRandom = () => Math.floor(Math.random() * available)
-      let tracker = state.indexTracker
-      if (isEqual(tracker.size, available)) {
-        tracker = new Set()
-      }
-      let index = getRandom()
-      while (tracker.has(index)) {
-        index = getRandom()
-      }
-      tracker.add(index)
+    case SET_RANDOM: {
+      let index = Math.floor(Math.random() * state.places.length)
       return {
         ...state,
         index: index,
-        indexTracker: tracker,
         color: Palette[state.paletteIndex % Palette.length],
         paletteIndex: state.paletteIndex + 1
       }
+    }
     case RESET:
       return {
         ...state,

@@ -14,9 +14,13 @@ export const getDetail = (dispatch, props) => {
     params: params
   })
   .then((response) => {
-    const place = get(response.data, 'result')
-    const attributions = get(response.data, 'html_attributions', [])
-    dispatch(setDetail(place, attributions))
+    try {
+      const place = get(response.data, 'result')
+      const attributions = get(response.data, 'html_attributions', [])
+      dispatch(setDetail(place, attributions))
+    } catch (error) {
+      dispatch(setDetail(null, []))
+    }
   })
   .catch((error) =>{
     console.log(error)
@@ -33,14 +37,19 @@ export const getDistance = (dispatch, props) => {
     location: location,
     placeId: placeId
   }
+  
   axios.get('/distance', {
     params: params
   })
   .then((response) => {
-    const rows = get(response.data, 'rows')
-    const elements = get(rows[0], 'elements')
-    const distance = get(elements[0], 'distance.text')
-    dispatch(setDistance(distance))
+    try {
+      const rows = get(response.data, 'rows')
+      const elements = get(rows[0], 'elements')
+      const distance = get(elements[0], 'distance.text')
+      dispatch(setDistance(distance))
+    } catch (error) {
+      dispatch(setDistance(null))
+    }
   })
   .catch((error) =>{
     console.log(error)
