@@ -83,19 +83,16 @@ class Place extends Component {
       attributions
     } = this.props
     const { copied } = this.state
-    const distanceLoaded = distance !== undefined;
-    const detailLoaded = detail !== undefined;
     return (<div className='App-place flipInY' style={{ borderColor: color }}>
-      {distance && detailLoaded && <div className='distance flipInX'
+      <div className='name flipInX' title={name} style={{ color: color }}>
+        {name}
+      </div>
+      {distance && <div className='distance flipInX'
         title='Place distance'
         style={{ color: color }}>
         {distance}
       </div>}
-      {distanceLoaded && detailLoaded && <div className='name flipInX'
-        title={name}>
-        {name}
-      </div>}
-      {detail && distanceLoaded && <div className='detail flipInX'>
+      {detail && <div className='detail flipInX'>
         {hours && <div className='hours'
           title="Today's hours">
           {hours.map((h) => <span key={h}>{h}</span>)}
