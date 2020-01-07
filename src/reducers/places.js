@@ -1,6 +1,5 @@
 import { Categories, getDefaultType } from '../Categories'
 import Palette from '../Palette'
-import isEqual from 'lodash/isEqual'
 
 import {
   SET_REQUESTED,
@@ -13,7 +12,8 @@ import {
   SET_PREVIOUS,
   SET_NEXT,
   SET_RANDOM,
-  RESET
+  RESET,
+  UPDATE_PLACE
  } from '../actions/places'
 
 const initialState = {
@@ -101,6 +101,17 @@ export default (state = initialState, action) => {
         index: index,
         color: Palette[state.paletteIndex % Palette.length],
         paletteIndex: state.paletteIndex + 1
+      }
+    }
+    case UPDATE_PLACE: {
+      const places = [...state.places]
+      const place =  {
+        ...places[state.index],
+        ...action.data
+      }
+      places[state.index] = place;
+      return {...state,
+        places: places
       }
     }
     case RESET:

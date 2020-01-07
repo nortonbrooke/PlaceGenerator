@@ -9,6 +9,7 @@ export const SET_NEXT = 'SET_NEXT'
 export const SET_PREVIOUS = 'SET_PREVIOUS'
 export const SET_RANDOM = 'SET_RANDOM'
 export const RESET = 'RESET'
+export const UPDATE_PLACE = 'UPDATE_PLACE'
 
 export const setRequested = () => {
   return {
@@ -80,5 +81,12 @@ export const setRandom = (count) => {
 export const reset = () => {
   return {
     type: RESET
+  }
+}
+
+export const updatePlace = (data) => {
+  return {
+    type: UPDATE_PLACE,
+    data: data
   }
 }

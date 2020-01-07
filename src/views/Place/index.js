@@ -1,5 +1,4 @@
 import { connect } from 'react-redux'
-import { getOpenHours } from '../../util'
 import get from 'lodash/get'
 import {
   getDistance,
@@ -19,22 +18,29 @@ const getPlace = (state) => {
   const index = getIndex(state)
   return places[Math.abs(index) % places.length]
 }
-const getName = (state) => {
+const getPlaceName = (state) => {
   const place = getPlace(state)
   return get(place, 'name')
 }
+const getPlaceDistance = (state) => {
+  const place = getPlace(state)
+  return get(place, 'distance')
+}
+const getPlaceDetail = (state) => {
+  const place = getPlace(state)
+  return get(place, 'detail')
+}
+const getPlaceAttributions = (state) => {
+  const place = getPlace(state)
+  return get(place, 'attributions')
+}
 const mapStateToProps = state => ({
   nightMode: state.main.nightMode,
-  distance: state.place.distance,
   color: state.places.color,
-  name: getName(state),
-  hours: getOpenHours(new Date(), state.place.detail),
-  priceLevel: get(state.place.detail, 'price_level'),
-  rating: get(state.place.detail, 'rating'),
-  totalRatings: get(state.place.detail, 'user_ratings_total'),
-  address: get(state.place.detail, 'formatted_address'),
-  url: get(state.place.detail, 'url'),
-  attributions: state.place.attributions
+  name: getPlaceName(state),
+  distance: getPlaceDistance(state),
+  detail: getPlaceDetail(state),
+  attributions: getPlaceAttributions(state)
 })
 
 const mapDispatchToProps = (dispatch, props) => ({

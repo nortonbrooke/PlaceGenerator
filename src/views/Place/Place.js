@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import isEmpty from 'lodash/isEmpty'
 import noop from 'lodash/noop'
-import { concat } from '../../util'
+import { concat, getOpenHours } from '../../util'
 import './Place.css'
 
 class Place extends Component {
@@ -15,16 +15,28 @@ class Place extends Component {
   componentDidMount() {
     const {
       location,
+      distance,
       placeId,
       getDistance,
+      detail,
       getDetail
     } = this.props
-    if (!isEmpty(location)) {
+    if (!isEmpty(location) && !distance) {
       getDistance()
     }
-    if (placeId) {
+    if (placeId && !detail) {
       getDetail()
     }
+  }
+
+  getHours() {
+    const {
+      detail
+    } = this.props
+    if (detail) {
+      return getOpenHours(new Date(), detail);
+    }
+    return [];
   }
 
   copyAddress(event, text) {
@@ -76,17 +88,13 @@ class Place extends Component {
       color,
       name,
       distance,
-      hours,
-      priceLevel,
-      rating,
-      totalRatings,
-      address,
-      url,
+      detail,
       attributions
     } = this.props
     const { copied } = this.state
+    const hours = this.getHours();
     return (<div className='App-place flipInY' style={{ borderColor: color }}>
-      {distance && <div className='distance'
+      {distance && <div className='distance flipInX'
         title='Place distance'
         style={{ color: color }}>
         {distance}
@@ -95,26 +103,27 @@ class Place extends Component {
         title={name}>
         {name}
       </div>
-      <div className='detail'>
+      {detail && <div className='detail flipInX'>
         {hours && <div className='hours'
           title="Today's hours">
           {hours.map((h) => <span key={h}>{h}</span>)}
         </div>}
         <div className='stats'>
-          {rating && <div title='Rating'>
-            <span>{rating} &#9733; ({totalRatings})</span>
+          {detail.rating && <div title='Rating'>
+            <span>{detail.rating} &#9733; {detail.user_ratings_total ? `(${detail.user_ratings_total})` : ''}</span>
           </div>}
-          · {priceLevel && <div className='price' title='Price Level'>{concat(priceLevel, '$')}</div>}
+          {detail.rating && detail.price_level && <span> · </span>}
+          {detail.price_level && <div className='price' title='Price Level'>{concat(detail.price_level, '$')}</div>}
         </div>
         <div>
-          {address && <button className='small'
+          {detail.formatted_address && <button className='small'
             title='Copy place address'
-            onClick={(e) => this.copyAddress(e, address)}>
+            onClick={(e) => this.copyAddress(e, detail.formatted_address)}>
             {copied ? 'Copied' : 'Copy Address'}
           </button>}
-          {url && <button className='small'
+          {detail.url && <button className='small'
             title='Open place in Google'
-            onClick={(e) => this.openTab(e, url)}>
+            onClick={(e) => this.openTab(e, detail.url)}>
             Open in Google
             </button>}
         </div>
@@ -122,7 +131,7 @@ class Place extends Component {
           title='Place attributions'>
           {attributions.map((a) => a)}
         </div>}
-      </div>
+      </div>}
     </div>)
   }
 }

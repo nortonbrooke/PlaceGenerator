@@ -1,9 +1,8 @@
 import axios from 'axios'
 import get from 'lodash/get'
 import {
-  setDistance,
-  setDetail
-} from '../actions/place'
+  updatePlace
+} from '../actions/places'
 
 export const getDetail = (dispatch, props) => {
   const { placeId } = props
@@ -17,14 +16,17 @@ export const getDetail = (dispatch, props) => {
     try {
       const place = get(response.data, 'result')
       const attributions = get(response.data, 'html_attributions', [])
-      dispatch(setDetail(place, attributions))
+      dispatch(updatePlace({
+        detail: place,
+        attributions
+      }))
     } catch (error) {
-      dispatch(setDetail(null, []))
+      dispatch(updatePlace({ detail: null, attributions: [] }))
     }
   })
   .catch((error) =>{
     console.log(error)
-    dispatch(setDetail(null, []))
+    dispatch(updatePlace({ detail: null, attributions: [] }))
   })
 }
 
@@ -46,13 +48,13 @@ export const getDistance = (dispatch, props) => {
       const rows = get(response.data, 'rows')
       const elements = get(rows[0], 'elements')
       const distance = get(elements[0], 'distance.text')
-      dispatch(setDistance(distance))
+      dispatch(updatePlace({ distance }))
     } catch (error) {
-      dispatch(setDistance(null))
+      dispatch(updatePlace({ distance: null }))
     }
   })
   .catch((error) =>{
     console.log(error)
-    dispatch(setDistance(null))
+    dispatch(updatePlace({ distance: null }))
   })
 }
