@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import isEmpty from 'lodash/isEmpty'
 import noop from 'lodash/noop'
-import { concat, getOpenHours } from '../../util'
+import { concat } from '../../util'
 import './Place.css'
 
 class Place extends Component {
@@ -27,16 +27,6 @@ class Place extends Component {
     if (placeId && !detail) {
       getDetail()
     }
-  }
-
-  getHours() {
-    const {
-      detail
-    } = this.props
-    if (detail) {
-      return getOpenHours(new Date(), detail);
-    }
-    return [];
   }
 
   copyAddress(event, text) {
@@ -89,21 +79,23 @@ class Place extends Component {
       name,
       distance,
       detail,
+      hours,
       attributions
     } = this.props
     const { copied } = this.state
-    const hours = this.getHours();
+    const distanceLoaded = distance !== undefined;
+    const detailLoaded = detail !== undefined;
     return (<div className='App-place flipInY' style={{ borderColor: color }}>
-      {distance && <div className='distance flipInX'
+      {distance && detailLoaded && <div className='distance flipInX'
         title='Place distance'
         style={{ color: color }}>
         {distance}
       </div>}
-      <div className='name'
+      {distanceLoaded && detailLoaded && <div className='name flipInX'
         title={name}>
         {name}
-      </div>
-      {detail && <div className='detail flipInX'>
+      </div>}
+      {detail && distanceLoaded && <div className='detail flipInX'>
         {hours && <div className='hours'
           title="Today's hours">
           {hours.map((h) => <span key={h}>{h}</span>)}

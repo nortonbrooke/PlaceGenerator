@@ -12,9 +12,12 @@ export const getNight = (latitude, longitude) => {
 }
 
 export const getOpenHours = (date, data) => {
+  if (!data) {
+    return []
+  }
   const day = date.getDay()
   const weekdayHours = get(data, 'opening_hours.weekday_text', [])
-  let hours = ''
+  let hours = []
   try {
     hours = weekdayHours[isEqual(day, 0) ? weekdayHours.length - 1 : day - 1]
     hours = split(hours, ': ')[1]

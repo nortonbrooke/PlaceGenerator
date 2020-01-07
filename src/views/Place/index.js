@@ -10,6 +10,7 @@ import {
   setRandom
 } from '../../actions/places'
 import Place from './Place'
+import { getOpenHours } from '../../util'
 
 const getIndex = (state) => state.places.index
 const getPlaces = (state) => state.places.places
@@ -40,6 +41,7 @@ const mapStateToProps = state => ({
   name: getPlaceName(state),
   distance: getPlaceDistance(state),
   detail: getPlaceDetail(state),
+  hours: getOpenHours(new Date(), getPlaceDetail(state)),
   attributions: getPlaceAttributions(state)
 })
 
