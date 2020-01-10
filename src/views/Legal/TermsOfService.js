@@ -2,7 +2,7 @@ import React from 'react'
 
 const TermsOfService = () => {
   return (
-    <div className='App-policy'>
+    <div className='policy'>
       <h2>Terms of Service</h2>
       <h3>1. Terms</h3>
       <p>

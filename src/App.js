@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { 
+import {
   cookieAuthorization,
   acknowledgeHelp
-} from './middleware/main'
+} from './api/main'
 import Alert from './components/Alert'
 import Footer from './components/Footer'
 import Places from './views/Places'
+import ErrorBoundary from './views/ErrorBoundary'
 import TermsOfService from './views/Legal/TermsOfService'
 import PrivacyPolicy from './views/Legal/PrivacyPolicy'
 import CookiePolicy from './views/Legal/CookiePolicy'
@@ -16,7 +17,7 @@ import './App.css'
 import './Animate.css'
 
 class App extends Component {
-  render () {
+  render() {
     const {
       nightMode,
       cookiesAuthorized,
@@ -44,13 +45,14 @@ class App extends Component {
               return (
                 <div
                   className={classnames('App', {
-                    day: !nightMode,
-                    night: nightMode
+                    'night-mode': nightMode
                   })}
                 >
-                  <Places />
-                  {!cookiesAuthorized && <CookieBanner />}
-                  <Footer />
+                  <ErrorBoundary>
+                    <Places />
+                    {!cookiesAuthorized && <CookieBanner />}
+                    <Footer />
+                  </ErrorBoundary>
                 </div>
               )
             }}

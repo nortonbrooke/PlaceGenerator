@@ -13,7 +13,7 @@ const Slider = ({
   onChange
 }) => {
   return (
-    <div className='App-slider'>
+    <div className='slider'>
       <label>{label}</label>
       <div className='control'>
         <input
@@ -22,7 +22,7 @@ const Slider = ({
           min={min}
           max={max}
           value={value}
-          onChange={(e) => onChange(e.target.value)}
+          onChange={(e) => onChange(parseInt(e.target.value))}
         />
       </div>
       <div className='control-value'>

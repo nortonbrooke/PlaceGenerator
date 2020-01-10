@@ -2,7 +2,7 @@ import React from 'react'
 import './Alert.css'
 
 const Alert = ({ children }) => {
-  return (<div className='App-alert'>
+  return (<div className='alert'>
     {children}
   </div>)
 }

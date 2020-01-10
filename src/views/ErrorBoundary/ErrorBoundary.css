@@ -1,0 +1,15 @@
+.error-page {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.error-page span {
+    font-size: 50px;
+}
+
+.error-page button {
+    margin: 20px;
+}

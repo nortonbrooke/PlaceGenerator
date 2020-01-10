@@ -7,85 +7,96 @@
   align-items: center;
   justify-content: space-evenly;
   color: #326ADF;
+  min-width: 320px;
 }
 
-.App-policy {
+.policy {
   font-size: 12px;
   padding: 0px 8px;
 }
 
-/* ------------- Special Styles ------------- */
-.App.day button.yellow,
-.App.night button.yellow {
-  color: #F5B400;
-  border-color: #F5B400;
-}
-
-.App.day button.selected.yellow,
-.App.night button.selected.yellow  {
-  background: #F5B400;
-}
-
-.App.day button.green,
-.App.night button.green {
-  color: #35A251;
-  border-color: #35A251;
-}
-
-.App.day button.selected.green,
-.App.night button.selected.green  {
-  background: #35A251;
-}
-
-/* ---------------- App Day Styles ---------------- */
-.App.day {
-  background: #FFFFFF;
+/* ---------------- App Color Scheme ---------------- */
+.App {
+  background: white;
   color: #326ADF;
 }
 
-.App.day button {
-  background: #FFFFFF;
+.App button {
+  background: white;
   color: #326ADF;
   border-color: #326ADF;
 }
 
-.App.day button.selected {
+.App button.selected {
   background: #326ADF;
-  color: #FFFFFF;
+  color: white;
 }
 
-.App.day a {
+.App a {
   color: #326ADF;
 }
 
-.App.day input {
-  background: #FFFFFF;
+.App input {
+  background: white;
   border: 1px solid #326ADF;
 }
 
-/* ---------------- App Night Styles ---------------- */
-.App.night {
-  background: #000000;
-  color: #FFFFFF;
+/* ---------------- App Night Mode Color Scheme ---------------- */
+.App.night-mode {
+  background: black;
+  color: white;
 }
 
-.App.night button {
-  background: #000000;
-  color: #FFFFFF;
-  border-color: #FFFFFF;
+.App.night-mode button {
+  background: black;
+  color: white;
+  border-color: white;
 }
 
-.App.night button.selected {
-  background: #FFFFFF;
-  color: #000000;
+.App.night-mode button.selected {
+  background: white;
+  color: black;
 }
 
-.App.night a {
-  color: #FFFFFF;
+.App.night-mode a {
+  color: white;
 }
 
-.App.night input {
-  background: #000000;
-  color: #FFFFFF;
-  border: 1px solid #FFFFFF;
+.App.night-mode input {
+  background: black;
+  color: white;
+  border: 1px solid white;
+}
+
+/* ------------- Button Color Schemes ------------- */
+.App button.yellow,
+.App.night-mode button.yellow {
+  color: #F5B400;
+  border-color: #F5B400;
+}
+
+.App button.selected.yellow {
+  background: #F5B400;
+  color: white;
+}
+
+.App.night-mode button.selected.yellow  {
+  background: #F5B400;
+  color: black;
+}
+
+.App button.green,
+.App.night-mode button.green {
+  color: #35A251;
+  border-color: #35A251;
+}
+
+.App button.selected.green {
+  background: #35A251;
+  color: white;
+}
+
+.App.night-mode button.selected.green  {
+  background: #35A251;
+  color: black;
 }

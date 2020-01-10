@@ -1,4 +1,4 @@
-.App-slider {
+.slider {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -12,22 +12,22 @@
   box-sizing: border-box;
 }
 
-.App-slider label {
+.slider label {
   flex: 1;
 }
 
-.App-slider .control,
-.App-slider .control-value {
+.slider .control,
+.slider .control-value {
   display: flex;
   align-items: center;
   flex: 2;
 }
 
-.App-slider .control input {
+.slider .control input {
   margin: 0px 4px;
 }
 
-.App-slider .control-value {
+.slider .control-value {
   display: flex;
   align-items: center;
   justify-content: flex-end;

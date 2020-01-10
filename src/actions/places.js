@@ -5,10 +5,8 @@ export const SET_CATEGORY = 'SET_CATEGORY'
 export const SET_TYPE = 'SET_TYPE'
 export const SET_RADIUS = 'SET_RADIUS'
 export const SET_PRICE_LEVEL = 'SET_PRICE_LEVEL'
-export const SET_NEXT = 'SET_NEXT'
-export const SET_PREVIOUS = 'SET_PREVIOUS'
-export const SET_RANDOM = 'SET_RANDOM'
-export const RESET = 'RESET'
+export const SET_PLACE = 'SET_PLACE'
+export const SET_RANDOM_PLACE = 'SET_RANDOM_PLACE'
 export const UPDATE_PLACE = 'UPDATE_PLACE'
 
 export const setRequested = () => {
@@ -59,28 +57,16 @@ export const setPriceLevel = (priceLevel) => {
   }
 }
 
-export const setPrevious = () => {
+export const setPlace = (id) => {
   return {
-    type: SET_PREVIOUS
+    type: SET_PLACE,
+    id: id
   }
 }
 
-export const setNext = () => {
+export const setRandomPlace = () => {
   return {
-    type: SET_NEXT
-  }
-}
-
-export const setRandom = (count) => {
-  return {
-    type: SET_RANDOM,
-    count: count
-  }
-}
-
-export const reset = () => {
-  return {
-    type: RESET
+    type: SET_RANDOM_PLACE
   }
 }
 

@@ -1,4 +1,4 @@
-.App-alert {
+.alert {
   font-size: 12px;
   padding: 4px 8px;
   margin: 8px;
@@ -7,10 +7,10 @@
   justify-content: space-between;
 }
 
-.App-alert p {
+.alert p {
   margin-right: 8px;
 }
 
-.App-alert a {
+.alert a {
   text-decoration: underline;
 }

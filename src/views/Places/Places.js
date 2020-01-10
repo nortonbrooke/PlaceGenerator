@@ -11,6 +11,7 @@ import Slider from '../../components/Slider'
 import Toolbar from '../../components/Toolbar'
 import Select from '../../components/Select'
 import Radius from '../../assets/Radius'
+import Bubbles from '../Bubbles'
 import EmptyPlaces from '../EmptyPlaces'
 import Place from '../Place'
 import PoweredByGoogleDark from '../../assets/powered_by_google_on_white_hdpi.png'
@@ -19,7 +20,7 @@ import classnames from 'classnames'
 import './Places.css'
 
 class Places extends Component {
-  componentDidMount () {
+  componentDidMount() {
     const {
       locationAuthorized,
       getLocation
@@ -29,12 +30,12 @@ class Places extends Component {
     }
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     const { clearLocation } = this.props
     clearLocation()
   }
 
-  render () {
+  render() {
     const {
       nightMode,
       location,
@@ -51,11 +52,13 @@ class Places extends Component {
       priceLevelToggled,
       setPriceLevel,
       getNearbyPlaces,
+      selectedId,
       placeId,
-      setRandom
+      setPlace,
+      setRandomPlace
     } = this.props
     return (
-      <div className='App-places'>
+      <div className='places'>
         <Container>
           <Nav>
             <button
@@ -81,7 +84,7 @@ class Places extends Component {
             <Select
               selected={type}
               title='Change type'
-              style={{flex: 4}}
+              style={{ flex: 4 }}
               onChange={(type) => setType(type)}>
               {getCategoryTypes(category).map((o) => {
                 if (!isNil(o.group)) {
@@ -150,7 +153,7 @@ class Places extends Component {
                     priceLevel
                   })
                 } else {
-                  setRandom()
+                  setRandomPlace()
                 }
               }}>
               Generate
@@ -159,14 +162,13 @@ class Places extends Component {
         </Container>
         {isEmpty(places)
           ? <EmptyPlaces
-            location={location}
-            category={category}
-            type={type}
-            radius={radius} />
-          : <Place
-            key={placeId}
-            placeId={placeId}
-            location={location} />}
+              location={location}
+              category={category}
+              type={type}
+              radius={radius} />
+          : <Bubbles data={places} selectedId={selectedId} onBubbleClick={(id) => setPlace(id)}>
+              <Place key={selectedId} placeId={placeId} location={location} />
+          </Bubbles>}
         <div className='attributions' title='Nearby places attributions'>
           {attributions.map(a => a)}
           <img

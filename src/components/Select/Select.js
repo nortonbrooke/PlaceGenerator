@@ -12,7 +12,7 @@ const Selector = ({
   style,
   nightMode
 }) => {
-  return (<div className='App-select' style={style}>
+  return (<div className='select' style={style}>
     <select
       value={selected}
       id={shortid.generate()}

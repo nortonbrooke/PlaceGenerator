@@ -4,7 +4,7 @@ import LogoDark from '../../assets/logo-dark.svg'
 import './Header.css'
 
 const Header = ({ nightMode }) => {
-  return <header className='App-header'>
+  return <header className='header'>
     <img src={nightMode ? LogoLight : LogoDark}
       height={28}
       alt='waidoe'

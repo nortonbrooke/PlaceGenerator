@@ -1,4 +1,4 @@
-.App-nav {
+.nav {
   margin-bottom: 8px;
   display: flex;
   align-items: center;
@@ -7,32 +7,32 @@
   box-sizing: border-box;
 }
 
-.App-nav button {
+.nav button {
   flex: 1;
   margin: 0px !important;
 }
 
-.App-nav button {
+.nav button {
   border-width: 0px 2px 0px 0px;
   border-radius: 0px;
 }
 
-.App-nav button:first-child {
+.nav button:first-child {
   border-radius: 4px 0px 0px 4px;
 }
 
-.App-nav button:last-child {
+.nav button:last-child {
   border-right: none;
   border-radius: 0px 4px 4px 0px;
 }
 
-/* ---------------- App Day/Night Styles ---------------- */
-.App.day .App-nav button.selected {
-  color: #FFFFFF;
+/* ---------------- Color Schemes ---------------- */
+.App .nav button.selected {
+  color: white;
   background: #326ADF;
 }
 
-.App.night .App-nav button.selected {
-  color: #000000;
-  background: #FFFFFF;
+.App.night-mode .nav button.selected {
+  color: black;
+  background: white;
 }

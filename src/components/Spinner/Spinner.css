@@ -1,10 +1,10 @@
-.App-spinner {
+.spinner {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.App-spinner img {
+.spinner img {
   margin: 16px;
 }

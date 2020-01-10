@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import './Footer.css'
 
 const Footer = () => {
-  return (<footer className='App-footer'>
+  return (<footer className='footer'>
     <a href='mailto:brooke@waidoe.com'>Contact</a>
     <Link to='/terms'>Terms</Link>
     <Link to='/privacy'>Privacy</Link>

@@ -1,4 +1,4 @@
-.App-radius {
+.radius {
   height: 18px;
   width: 18px;
   border: 2px solid #F5B400;
@@ -6,7 +6,7 @@
   position: relative;
 }
 
-.App-radius .center {
+.radius .center {
   background-color: #F5B400;
   width: 4px;
   height: 4px;
@@ -16,7 +16,7 @@
   right: 7px;
 }
 
-.App-radius .radius {
+.radius .line {
   background-color: #F5B400;
   width: 8px;
   height: 2px;
@@ -25,26 +25,26 @@
   right: 0px;
 }
 
-.App-radius.white {
-  border-color: #FFFFFF;
+.radius.white {
+  border-color: white;
 }
 
-.App-radius.white .center {
-  background-color: #FFFFFF;
+.radius.white .center {
+  background-color: white;
 }
 
-.App-radius.white .radius {
-  background-color: #FFFFFF;
+.radius.white .line {
+  background-color: white;
 }
 
-.App-radius.black {
-  border-color: #000000;
+.radius.black {
+  border-color: black;
 }
 
-.App-radius.black .center {
-  background-color: #000000;
+.radius.black .center {
+  background-color: black;
 }
 
-.App-radius.black .radius {
-  background-color: #000000;
+.radius.black .line {
+  background-color: black;
 }

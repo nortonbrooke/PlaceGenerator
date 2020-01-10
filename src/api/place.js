@@ -1,15 +1,15 @@
 import axios from 'axios'
 import get from 'lodash/get'
-import {
-  updatePlace
-} from '../actions/places'
+import { updatePlace } from '../actions/places'
 
 export const getDetail = (dispatch, props) => {
   const { placeId } = props
+
   const params = {
     placeId: placeId
   }
-  axios.get('/place', {
+
+  axios.get('/api/maps/place', {
     params: params
   })
     .then((response) => {
@@ -21,8 +21,8 @@ export const getDetail = (dispatch, props) => {
           attributions
         }))
       } catch (error) {
-        dispatch(updatePlace({ 
-          detail: null, 
+        dispatch(updatePlace({
+          detail: null,
           attributions: []
         }))
       }
@@ -41,12 +41,13 @@ export const getDistance = (dispatch, props) => {
     location,
     placeId
   } = props
+
   const params = {
     location: location,
     placeId: placeId
   }
 
-  axios.get('/distance', {
+  axios.get('/api/maps/distance', {
     params: params
   })
     .then((response) => {

@@ -1,0 +1,35 @@
+.canvas {
+    height: 320px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.bubble {
+    height: 100px;
+    width: 100px;
+    font-size: 10px;
+    color: transparent;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 50%;
+    border: 2px solid;
+    position: absolute;
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: all 0.6s ease-in-out;
+}
+
+.bubble.focused {
+    width: 320px;
+    height: 320px;
+    font-size: 20px;
+    font-weight: 600;
+    flex-flow: column nowrap;
+    z-index: 1000;
+}

@@ -3,21 +3,14 @@ import get from 'lodash/get'
 import {
   getDistance,
   getDetail
-} from '../../middleware/place'
-import {
-  setPrevious,
-  setNext,
-  setRandom
-} from '../../actions/places'
+} from '../../api/place'
 import Place from './Place'
 import { getOpenHours } from '../../util'
 
-const getIndex = (state) => state.places.index
-const getPlaces = (state) => state.places.places
-const getPlace = (state) => {
-  const places = getPlaces(state)
-  const index = getIndex(state)
-  return places[Math.abs(index) % places.length]
+const getPlace = (state) => state.places.place
+const getPlaceId = (state) => {
+  const place = getPlace(state);
+  return get(place, 'place_id')
 }
 const getPlaceName = (state) => {
   const place = getPlace(state)
@@ -38,6 +31,7 @@ const getPlaceAttributions = (state) => {
 const mapStateToProps = state => ({
   nightMode: state.main.nightMode,
   color: state.places.color,
+  placeId: getPlaceId(state),
   name: getPlaceName(state),
   distance: getPlaceDistance(state),
   detail: getPlaceDetail(state),
@@ -47,10 +41,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch, props) => ({
   getDistance: () => getDistance(dispatch, props),
-  getDetail: () => getDetail(dispatch, props),
-  setPrevious: () => dispatch(setPrevious()),
-  setNext: () => dispatch(setNext()),
-  setRandom: () => dispatch(setRandom())
+  getDetail: () => getDetail(dispatch, props)
 })
 
 export default connect(

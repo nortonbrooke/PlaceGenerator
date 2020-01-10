@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import isEmpty from 'lodash/isEmpty'
 import noop from 'lodash/noop'
 import { concat } from '../../util'
 import './Place.css'
@@ -9,23 +8,6 @@ class Place extends Component {
     super(props)
     this.state = {
       copied: false
-    }
-  }
-
-  componentDidMount() {
-    const {
-      location,
-      distance,
-      placeId,
-      getDistance,
-      detail,
-      getDetail
-    } = this.props
-    if (!isEmpty(location) && !distance) {
-      getDistance()
-    }
-    if (placeId && !detail) {
-      getDetail()
     }
   }
 
@@ -75,24 +57,18 @@ class Place extends Component {
 
   render() {
     const {
-      color,
       name,
-      distance,
       detail,
       hours,
-      attributions
+      attributions,
+      getDetail
     } = this.props
     const { copied } = this.state
-    return (<div className='App-place flipInY' style={{ borderColor: color }}>
-      <div className='name flipInX' title={name} style={{ color: color }}>
+    return (<div className='place'>
+      <div className='name' title={name}>
         {name}
       </div>
-      {distance && <div className='distance flipInX'
-        title='Place distance'
-        style={{ color: color }}>
-        {distance}
-      </div>}
-      {detail && <div className='detail flipInX'>
+      {detail ? <div className='detail flipInX'>
         {hours && <div className='hours'
           title="Today's hours">
           {hours.map((h) => <span key={h}>{h}</span>)}
@@ -101,7 +77,7 @@ class Place extends Component {
           {detail.rating && <div title='Rating'>
             <span>{detail.rating} &#9733; {detail.user_ratings_total ? `(${detail.user_ratings_total})` : ''}</span>
           </div>}
-          {detail.rating && detail.price_level && <span> · </span>}
+          {detail.rating && detail.price_level && <span className="separator">·</span>}
           {detail.price_level && <div className='price' title='Price Level'>{concat(detail.price_level, '$')}</div>}
         </div>
         <div>
@@ -120,7 +96,9 @@ class Place extends Component {
           title='Place attributions'>
           {attributions.map((a) => a)}
         </div>}
-      </div>}
+      </div> : detail === null ? <div class='detail'>Detail not available</div> :
+          <button className='small'
+            onClick={() => getDetail()}>Detail</button>}
     </div>)
   }
 }

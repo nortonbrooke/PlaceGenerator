@@ -1,8 +1,8 @@
-.App-select {
+.select {
   position: relative;
 }
 
-.App-select select {
+.select select {
   width: 100%;
   height: 32px;
   font-size: 14px;
@@ -19,21 +19,21 @@
   appearance: none;
 }
 
-.App-select .caret {
+.select .caret {
   position: absolute;
   right: 8px;
   top: 11px;
 }
 
-/* ---------------- App Day/Night Styles ---------------- */
-.App.day .App-select select {
-  background: #FFFFFF;
+/* ---------------- Color Schemes ---------------- */
+.App .select select {
+  background: white;
   border-color:#326ADF;
   color: #326ADF;
 }
 
-.App.night .App-select select {
-  background: #000000;
-  border-color:#FFFFFF;
-  color: #FFFFFF;
+.App.night-mode .select select {
+  background: black;
+  border-color:white;
+  color: white;
 }

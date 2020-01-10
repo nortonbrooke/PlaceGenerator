@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const PrivacyPolicy = () => {
   return (
-    <div className='App-policy'>
+    <div className='policy'>
       <h2>Privacy Policy</h2>
       <p>
         Your privacy is important to us. It is our policy to

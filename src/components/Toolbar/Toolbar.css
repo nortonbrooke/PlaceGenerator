@@ -1,16 +1,16 @@
-.App-toolbar {
+.toolbar {
   margin-bottom: 8px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.App-toolbar select,
-.App-toolbar button {
+.toolbar select,
+.toolbar button {
   flex: 1;
 }
 
-.App-toolbar button {
+.toolbar button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,6 +18,6 @@
   padding: 0px;
 }
 
-.App-toolbar button:not(:first-child) {
+.toolbar button:not(:first-child) {
   margin-left: 6px;
 }

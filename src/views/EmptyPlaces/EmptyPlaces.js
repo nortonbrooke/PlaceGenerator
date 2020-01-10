@@ -14,15 +14,15 @@ class EmptyPlaces extends Component {
       placesError
     } = this.props
     if (placesRequested) {
-      return (<div className='App-place empty loading'>
+      return (<div className='empty-places loading'>
         <Spinner className='pulse' />
       </div>)
     } else if (locationRequested) {
-      return (<div className='App-place empty location'>
+      return (<div className='empty-places location'>
         Requesting your location...
       </div>)
     } else if (!locationAuthorized && !locationError) {
-      return (<div className='App-place empty location'>
+      return (<div className='empty-places location'>
         <div>
           This site needs access to your location <br />
           to find places nearby
@@ -34,7 +34,7 @@ class EmptyPlaces extends Component {
         </button>
       </div>)
     } else if (locationError) {
-      return (<div className='App-place empty location'>
+      return (<div className='empty-places location'>
         {locationErrorMessage}
         <button
           className='small'
@@ -43,11 +43,11 @@ class EmptyPlaces extends Component {
         </button>
       </div>)
     } else if (placesError) {
-      return (<div className='App-place empty no-places-found'>
-        No places were found
+      return (<div className='empty-places no-places-found'>
+        No places found
       </div>)
     } else {
-      return (<div className='App-place empty'>
+      return (<div className='empty-places'>
         <Spinner />
       </div>)
     }

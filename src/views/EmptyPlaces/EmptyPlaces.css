@@ -1,21 +1,19 @@
-.App-place.empty {
+.empty-places {
+  height: 320px;
+  width: 320px;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  border: 2px solid;
+  border-radius: 50%;
 }
 
-.App-place.empty.location {
+.empty-places.location {
   font-size: 12px;
   flex-direction: column;
 }
 
-.App-place.location button {
+.empty-places.location button {
   margin: 8px;
-}
-
-.App-place.empty.request button {
-  color: #FFFFFF;
-  background-color: #326ADF;
-  border-color: #FFFFFF;
-  width: 64px;
 }

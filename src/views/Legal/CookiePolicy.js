@@ -2,7 +2,7 @@ import React from 'react'
 
 const CookiePolicy = () => {
   return (
-    <div className="App-policy">
+    <div className="policy">
       <h2>Cookie Policy</h2>
       <p>
         We use cookies to help improve your experience of{" "}

@@ -1,57 +1,50 @@
-.App-place {
-  width: 320px;
-  height: 320px;
-  margin: 16px 8px;
-  border: 2px solid;
-  border-radius: 50%;
-  padding: 4px;
-  text-align: center;
-  box-sizing: border-box;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-  cursor: default;
-  position: relative;
+.place {
+  padding: 10px;
 }
 
-.App-place .name {
-  font-size: 20px;
-  font-weight: 600;
+.place .name {
   text-align: center;
-  white-space: normal;
-  overflow: hidden;
-  max-width: 265px;
-  max-height: 85px;
+  margin-bottom: 4px;
 }
 
-.App-place .detail {
+.place .detail {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  padding: 8px;
+  font-size: 14px;
+  font-weight: normal;
 }
 
-.App-place .detail div {
+.place .detail div {
   display: flex;
   align-items: center;
-  padding: 2px;
 }
 
-.App-place .detail .hours {
+.place .hours {
   flex-direction: column;
 }
 
-.App-place .price {
+.place .price {
   font-size: 16px;
   font-weight: 600;
 }
 
-.App-place .detail input {
-  height: 0px;
-  opacity: 0;
+.place .separator {
+  margin: 0 4px;
 }
 
-.App-place .detail button {
-  margin: 0px 2px;
+.place button {
+  white-space: nowrap;
+  margin: 4px;
+}
+
+/* ---------------- Color Schemes ---------------- */
+.App .place .detail,
+.App .place .detail * {
+  color: #326ADF;
+}
+
+.App.night-mode .place .detail,
+.App.night-mode .place .detail * {
+  color: white;
 }

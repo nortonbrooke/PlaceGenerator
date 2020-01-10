@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { getLocation } from '../../middleware/main'
+import { getLocation } from '../../api/main'
 import EmptyPlaces from './EmptyPlaces'
 
 const mapStateToProps = state => ({

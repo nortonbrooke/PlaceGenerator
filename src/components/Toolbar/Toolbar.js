@@ -2,7 +2,7 @@ import React from 'react'
 import './Toolbar.css'
 
 const Toolbar = ({ children }) => {
-  return (<div className='App-toolbar'>
+  return (<div className='toolbar'>
     {children}
   </div>)
 }

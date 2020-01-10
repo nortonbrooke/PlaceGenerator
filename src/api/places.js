@@ -7,10 +7,8 @@ import {
   setRequested,
   setError,
   setPlaces,
-  setRandom
+  setRandomPlace
 } from '../actions/places'
-
-const MILES_TO_METERS = 1609.344
 
 export const getNearbyPlaces = (dispatch, props) => {
   const {
@@ -22,7 +20,6 @@ export const getNearbyPlaces = (dispatch, props) => {
 
   let parsedType = split(type, ':')
   let params = {
-    opennow: true,
     location: location,
     type: parsedType[0],
     keyword: parsedType.length > 1 ? parsedType[1] : ''
@@ -32,12 +29,7 @@ export const getNearbyPlaces = (dispatch, props) => {
   if (!isEqual(radius, 0)) {
     params = {
       ...params,
-      radius: parseInt(radius) * MILES_TO_METERS
-    }
-  } else {
-    params = {
-      ...params,
-      rankby: 'distance'
+      radius: radius
     }
   }
 
@@ -45,8 +37,8 @@ export const getNearbyPlaces = (dispatch, props) => {
   if (!isEqual(priceLevel, 0)) {
     params = {
       ...params,
-      minprice: parseInt(priceLevel),
-      maxprice: parseInt(priceLevel)
+      minprice: 0,
+      maxprice: priceLevel
     }
   }
  
@@ -54,10 +46,8 @@ export const getNearbyPlaces = (dispatch, props) => {
   dispatch(setRequested())
 
   // Request places
-  axios.get('/nearby', {
-    params: {
-      query: JSON.stringify(params)
-    }
+  axios.get('/api/maps/nearby', {
+    params: params
   }).then((response) => {
     try {
       const places = get(response.data, 'results')
@@ -66,7 +56,7 @@ export const getNearbyPlaces = (dispatch, props) => {
         dispatch(setError())
       } else {
         dispatch(setPlaces(places, attributions))
-        dispatch(setRandom())
+        dispatch(setRandomPlace())
       }
     } catch (error) {
       dispatch(setError())

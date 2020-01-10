@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SubscribeForm from './SubscribeForm';
+import Bubbles from './Bubbles';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<SubscribeForm />, div);
+  ReactDOM.render(<Bubbles>foo</Bubbles>, div);
   ReactDOM.unmountComponentAtNode(div);
 });

@@ -4,24 +4,23 @@ import isEqual from 'lodash/isEqual'
 import {
   clearLocation,
   getLocation
-} from '../../middleware/main'
-import { getNearbyPlaces } from '../../middleware/places'
+} from '../../api/main'
+import { getNearbyPlaces } from '../../api/places'
 import {
   setCategory,
   setType,
   setRadius,
   setPriceLevel,
-  setRandom,
-  reset
+  setPlace,
+  setRandomPlace
 } from '../../actions/places'
 import Places from './Places'
 
-const getIndex = (state) => state.places.index
 const getPlaces = (state) => state.places.places
-const getPlace = (state) => {
-  const places = getPlaces(state)
-  const index = getIndex(state)
-  return places[Math.abs(index) % places.length]
+const getPlace = (state) => state.places.place
+const getSelectedId = (state) => {
+  const place = getPlace(state);
+  return get(place, 'id')
 }
 const getPlaceId = (state) => {
   const place = getPlace(state)
@@ -41,7 +40,7 @@ const mapStateToProps = state => ({
   radiusToggled: !isEqual(state.places.radius, 0),
   priceLevel: state.places.priceLevel,
   priceLevelToggled: !isEqual(state.places.priceLevel, 0),
-  index: state.places.index,
+  selectedId: getSelectedId(state),
   placeId: getPlaceId(state)
 })
 
@@ -52,8 +51,8 @@ const mapDispatchToProps = (dispatch) => ({
   setType: (type) => dispatch(setType(type)),
   setRadius: (radius) => dispatch(setRadius(radius)),
   setPriceLevel: (priceLevel) => dispatch(setPriceLevel(priceLevel)),
-  setRandom: () => dispatch(setRandom()),
-  reset: () => dispatch(reset()),
+  setPlace: (id) => dispatch(setPlace(id)),
+  setRandomPlace: () => dispatch(setRandomPlace()),
   getNearbyPlaces: (props) => getNearbyPlaces(dispatch, props)
 })
 
