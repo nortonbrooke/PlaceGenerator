@@ -35,11 +35,31 @@ class Places extends Component {
     clearLocation()
   }
 
+  generate() {
+    const {
+      requested,
+      location,
+      type,
+      radius,
+      priceLevel,
+      getNearbyPlaces
+    } = this.props;
+    if (!requested) {
+      getNearbyPlaces({
+        location,
+        type,
+        radius,
+        priceLevel
+      })
+    }
+  }
+
   render() {
     const {
       nightMode,
       location,
       places,
+      requested,
       attributions,
       category,
       setCategory,
@@ -51,7 +71,6 @@ class Places extends Component {
       priceLevel,
       priceLevelToggled,
       setPriceLevel,
-      getNearbyPlaces,
       selectedId,
       placeId,
       setPlace,
@@ -143,20 +162,15 @@ class Places extends Component {
           <Toolbar>
             <button
               title='Generate place'
-              disabled={isEmpty(location) || isEqual(places.length, 1)}
+              disabled={isEmpty(location) || isEqual(places.length, 1) || requested}
               onClick={(e) => {
                 if (isEmpty(places)) {
-                  getNearbyPlaces({
-                    location,
-                    type,
-                    radius,
-                    priceLevel
-                  })
+                  this.generate()
                 } else {
                   setRandomPlace()
                 }
               }}>
-              Generate
+              {requested ? 'Generating...' : 'Generate'}
             </button>
           </Toolbar>
         </Container>
