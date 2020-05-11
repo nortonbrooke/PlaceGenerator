@@ -8,7 +8,7 @@ const PrivacyPolicy = () => {
       <p>
         Your privacy is important to us. It is our policy to
         respect your privacy regarding any information we may collect from you
-        across our website, <a href='https://waidoe.com'>https://waidoe.com</a>,
+        across our website, <a href='https://placegenerator.com'>https://placegenerator.com</a>,
         and other websites we own and operate.
       </p>
       <h3>1. Information we collect</h3>
@@ -320,18 +320,18 @@ const PrivacyPolicy = () => {
         we will ask you to re-consent to the amended privacy policy.
       </p>
       <p>
-        <strong>Waidoe Corporation Data Controller</strong>
+        <strong>Data Controller</strong>
         <br />
         Brooke Norton
         <br />
-        brooke@waidoe.com
+        nortonbrooke60@gmail.com
       </p>
       <p>
-        <strong>Waidoe Corporation Data Protection Officer</strong>
+        <strong>Data Protection Officer</strong>
         <br />
         Brooke Norton
         <br />
-        brooke@waidoe.com
+        nortonbrooke60@gmail.com
       </p>
       <p>This policy is effective as of 12 February 2019.</p>
     </div>

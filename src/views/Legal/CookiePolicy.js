@@ -6,7 +6,7 @@ const CookiePolicy = () => {
       <h2>Cookie Policy</h2>
       <p>
         We use cookies to help improve your experience of{" "}
-        <a href="https://waidoe.com">https://waidoe.com</a>. This cookie
+        <a href="https://placegenerator.com">https://placegenerator.com</a>. This cookie
         policy is part of the privacy policy, and covers the
         use of cookies between your device and our website. We also provide
         basic information on third-party services we may use, who may also use
@@ -16,7 +16,7 @@ const CookiePolicy = () => {
       <p>
         If you don’t wish to accept cookies from us, you should instruct your
         browser to refuse cookies from{" "}
-        <a href="https://waidoe.com">https://waidoe.com</a>, with the
+        <a href="https://placegenerator.com">https://placegenerator.com</a>, with the
         understanding that we may be unable to provide you with some of your
         desired content and services.
       </p>

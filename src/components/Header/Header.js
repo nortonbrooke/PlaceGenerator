@@ -7,7 +7,7 @@ const Header = ({ nightMode }) => {
   return <header className='header'>
     <img src={nightMode ? LogoLight : LogoDark}
       height={28}
-      alt='waidoe'
+      alt='Place Generator'
       className='logo'
       title='way&#x2022;doe' />
   </header>

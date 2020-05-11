@@ -98,7 +98,7 @@ class Place extends Component {
         </div>}
       </div> : detail === null ? <div class='detail'>Detail not available</div> :
           <button className='small'
-            onClick={() => getDetail()}>Detail</button>}
+            onClick={() => getDetail()}>Details</button>}
     </div>)
   }
 }

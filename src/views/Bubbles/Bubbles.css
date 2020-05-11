@@ -32,4 +32,5 @@
     font-weight: 600;
     flex-flow: column nowrap;
     z-index: 1000;
+    transition: all 0.6s ease-in-out;
 }

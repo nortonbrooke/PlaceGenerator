@@ -7,7 +7,7 @@ const TermsOfService = () => {
       <h3>1. Terms</h3>
       <p>
         By accessing the website at{' '}
-        <a href='https://waidoe.com'>https://waidoe.com</a>, you are agreeing
+        <a href='https://placegenerator.com'>https://placegenerator.com</a>, you are agreeing
         to be bound by these terms of service, all applicable laws and
         regulations, and agree that you are responsible for compliance with
         any applicable local laws. If you do not agree with any of these
@@ -55,7 +55,7 @@ const TermsOfService = () => {
         </li>
         <li>
           This license shall automatically terminate if you violate any of
-          these restrictions and may be terminated by Waidoe Corporation at
+          these restrictions and may be terminated by Place Generator at
           any time. Upon terminating your viewing of these materials or upon
           the termination of this license, you must destroy any downloaded
           materials in your possession whether in electronic or printed
@@ -66,7 +66,7 @@ const TermsOfService = () => {
       <ol type='a'>
         <li>
           The materials on this website are provided on an 'as
-          is' basis. Waidoe Corporation makes no warranties, expressed or
+          is' basis. Place Generator makes no warranties, expressed or
           implied, and hereby disclaims and negates all other warranties
           including, without limitation, implied warranties or conditions of
           merchantability, fitness for a particular purpose, or
@@ -74,7 +74,7 @@ const TermsOfService = () => {
           rights.
         </li>
         <li>
-          Further, Waidoe Corporation does not warrant or make any
+          Further, Place Generator does not warrant or make any
           representations concerning the accuracy, likely results, or
           reliability of the use of the materials on its website or otherwise
           relating to such materials or on any websites linked to this website.
@@ -82,11 +82,11 @@ const TermsOfService = () => {
       </ol>
       <h3>5. Limitations</h3>
       <p>
-        In no event shall Waidoe Corporation or its suppliers be liable for
+        In no event shall Place Generator or its suppliers be liable for
         any damages (including, without limitation, damages for loss of data
         or profit, or due to business interruption) arising out of the use or
         inability to use the materials on this website, even
-        if Waidoe Corporation or a Waidoe Corporation authorized
+        if Place Generator or a Place Generator authorized
         representative has been notified orally or in writing of the
         possibility of such damage. Because some jurisdictions do not allow
         limitations on implied warranties, or limitations of liability for
@@ -96,24 +96,24 @@ const TermsOfService = () => {
       <h3>6. Accuracy of materials</h3>
       <p>
         The materials appearing on this website could include
-        technical, typographical, or photographic errors. Waidoe Corporation
+        technical, typographical, or photographic errors. Place Generator
         does not warrant that any of the materials on its website are
-        accurate, complete or current. Waidoe Corporation may make changes to
+        accurate, complete or current. Place Generator may make changes to
         the materials contained on its website at any time without notice.
-        However Waidoe Corporation does not make any commitment to update the
+        However Place Generator does not make any commitment to update the
         materials.
       </p>
       <h3>7. Links</h3>
       <p>
-        Waidoe Corporation has not reviewed all of the sites linked to its
+        Place Generator has not reviewed all of the sites linked to its
         website and is not responsible for the contents of any such linked
-        website. The inclusion of any link does not imply endorsement by Waidoe
-        Corporation of the website. Use of any such linked website is at the
+        website. The inclusion of any link does not imply endorsement by Place Generator
+        of the website. Use of any such linked website is at the
         user's own risk.
       </p>
       <h3>8. Modifications</h3>
       <p>
-        Waidoe Corporation may revise these terms of service for its website
+        Place Generator may revise these terms of service for its website
         at any time without notice. By using this website you are agreeing to
         be bound by the then current version of these terms of service.
       </p>

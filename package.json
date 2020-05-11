@@ -1,10 +1,10 @@
 {
-  "name": "waidoe-web",
-  "version": "2.0.0",
+  "name": "PlaceGenerator",
+  "version": "2.5.0",
   "private": true,
   "author": {
     "name": "Brooke Norton",
-    "email": "brookemorgannorton@gmail.com",
+    "email": "nortonbrooke60@gmail.com",
     "url": "https://www.brookemnorton.com"
   },
   "license": "NO LICENSE",
