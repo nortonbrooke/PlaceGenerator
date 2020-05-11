@@ -26,7 +26,7 @@ class App extends Component {
 
     const CookieBanner = () => (<Alert>
       <p>
-        By continuing to use the site, you consent to the use of cookies. <Link to='/cookies'>Read More</Link>.
+        By continuing to use this site, you consent to the use of cookies. <Link to='/cookies'>Read More</Link>.
       </p>
       <button
         className='small'
