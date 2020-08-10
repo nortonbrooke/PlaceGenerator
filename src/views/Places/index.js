@@ -18,10 +18,6 @@ import Places from './Places'
 
 const getPlaces = (state) => state.places.places
 const getPlace = (state) => state.places.place
-const getSelectedId = (state) => {
-  const place = getPlace(state);
-  return get(place, 'id')
-}
 const getPlaceId = (state) => {
   const place = getPlace(state)
   return get(place, 'place_id')
@@ -40,7 +36,6 @@ const mapStateToProps = state => ({
   radiusToggled: !isEqual(state.places.radius, 0),
   priceLevel: state.places.priceLevel,
   priceLevelToggled: !isEqual(state.places.priceLevel, 0),
-  selectedId: getSelectedId(state),
   placeId: getPlaceId(state)
 })
 

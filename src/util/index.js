@@ -36,26 +36,17 @@ export const concat = (value, unit) => {
   return text
 }
 
-export const isEven = (n) => {
-  return n % 2 === 0
-}
-
-export const isOdd = (n) => {
-  return n % 2 !== 0
-}
-
 export const getRandom = (total) => {
   return Math.floor(Math.random() * total);
 }
 
 export const getNextRandom = (currentIndex = 0, total = 0) => {
-  if (total < 1) {
-    return currentIndex
+  if (total <= 1) {
+    return 0;
   }
   let nextIndex = getRandom(total)
-  if (isEven(currentIndex) === isEven(nextIndex) ||
-      isOdd(currentIndex) === isOdd(nextIndex)) {
-    nextIndex = getNextRandom(currentIndex, total)
-  } 
+  while (nextIndex === currentIndex) {
+    nextIndex = getRandom(total);
+  }
   return nextIndex
 }

@@ -1,6 +1,7 @@
 import { Categories, getDefaultType } from '../Categories'
 import { getNextRandom } from '../util'
 import palette from '../palette'
+import get from 'lodash/get';
 
 import {
   SET_REQUESTED,
@@ -86,7 +87,7 @@ export default (state = initialState, action) => {
         error: false
       }
     case SET_PLACE: {
-      const place = state.places.find((place) => place.id === action.id);
+      const place = state.places.find((place) => get(place, 'place_id') === action.id);
       const index = state.places.indexOf(place)
       return {
         ...state,

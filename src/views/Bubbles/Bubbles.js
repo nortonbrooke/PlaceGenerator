@@ -1,16 +1,22 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import get from 'lodash/get';
 import noop from 'lodash/noop'
 import palette from '../../palette'
 import './Bubbles.css'
 
 class Bubbles extends React.Component {
-    state = {
-        bubbleClicked: false
+    constructor(props) {
+        super(props)
+        this.state = {
+            bubbleClicked: false
+        }
     }
-
+    
     componentDidMount() {
         this.update()
+
+        window.addEventListener('resize', this.update.bind(this), true);
     }
 
     componentDidUpdate(prevProps) {
@@ -18,6 +24,14 @@ class Bubbles extends React.Component {
             this.setState({ bubbleClicked: false })
             this.update();
         }
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.update.bind(this), true);
+    }
+
+    getId(item) {
+        return get(item, this.props.identifier)
     }
 
     update() {
@@ -39,7 +53,7 @@ class Bubbles extends React.Component {
 
         bubbles.forEach((bubble, index) => {
             let focusedColor = bubbleClicked ? bubble.style.color : color
-            if (bubble.id === selectedId) {
+            if (bubble.getAttribute('id') === selectedId) {
                 bubble.setAttribute('style', `
                     color: ${focusedColor};
                     border-color:${focusedColor};
@@ -82,13 +96,13 @@ class Bubbles extends React.Component {
         return (<div className="canvas">
             {data.map((item) => {
                 let classNames = ['bubble']
-                let focused = item.id === selectedId;
+                let focused = this.getId(item) === selectedId
                 if (focused) {
                     classNames.push('focused')
                 }
                 return <div className={classNames.join(" ")}
-                    key={item.id} id={item.id}
-                    onClick={() => this.onClick(item.id)}>
+                    key={this.getId(item)} id={this.getId(item)}
+                    onClick={() => this.onClick(this.getId(item))}>
                     {focused ? children : item.name}
                 </div>
             })}
@@ -97,6 +111,7 @@ class Bubbles extends React.Component {
 }
 
 Bubbles.defaultProps = {
+    identifier: 'id',
     selectedId: '',
     onBubbleClick: noop
 }

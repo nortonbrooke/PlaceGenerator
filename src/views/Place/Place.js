@@ -96,7 +96,7 @@ class Place extends Component {
           title='Place attributions'>
           {attributions.map((a) => a)}
         </div>}
-      </div> : detail === null ? <div class='detail'>Detail not available</div> :
+      </div> : detail === null ? <div className='detail'>Details not available</div> :
           <button className='small'
             onClick={() => getDetail()}>Details</button>}
     </div>)

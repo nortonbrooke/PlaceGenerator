@@ -71,7 +71,6 @@ class Places extends Component {
       priceLevel,
       priceLevelToggled,
       setPriceLevel,
-      selectedId,
       placeId,
       setPlace,
       setRandomPlace
@@ -180,8 +179,8 @@ class Places extends Component {
               category={category}
               type={type}
               radius={radius} />
-          : <Bubbles data={places} selectedId={selectedId} onBubbleClick={(id) => setPlace(id)}>
-              <Place key={selectedId} placeId={placeId} location={location} />
+          : <Bubbles identifier='place_id' data={places} selectedId={placeId} onBubbleClick={(id) => setPlace(id)}>
+              <Place key={placeId} placeId={placeId} location={location} />
           </Bubbles>}
         <div className='attributions' title='Nearby places attributions'>
           {attributions.map(a => a)}
